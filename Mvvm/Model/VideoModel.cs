@@ -22,32 +22,20 @@ namespace NicoV3.Mvvm.Model
         public VideoModel(string id)
             : this()
         {
-            this.ContentId = id;
+            this.VideoUrl = id;
 
-            // ﾋﾞﾃﾞｵ詳細情報取得
-            var url = string.Format(Constants.VideoDetailUrl, this.VideoId);
-            var txt = GetSmileVideoHtmlText(url);
-            var xml = XDocument.Load(new StringReader(txt)).Root.Element("thumb");
-
-            Title = xml.Element("title").Value;
-            ViewCounter = long.Parse(xml.Element("view_counter").Value);
-            MylistCounter = long.Parse(xml.Element("mylist_counter").Value);
-            CommentCounter = long.Parse(xml.Element("comment_num").Value);
-            StartTime = DateTime.Parse(xml.Element("first_retrieve").Value);
-            ThumbnailUrl = xml.Element("thumbnail_url").Value;
-            LengthSeconds = NicoDataConverter.ToLengthSeconds(xml.Element("length").Value);
-            LastResBody = xml.Element("last_res_body").Value;
-
+            // ﾋﾞﾃﾞｵ情報読み取り
+            this.Reload();
         }
 
         /// <summary>
         /// ｺﾝﾃﾝﾂId (http://nico.ms/ の後に連結することでコンテンツへのURLになります)
         /// </summary>
-        public string ContentId
+        public string VideoUrl
         {
             get
             {
-                return "http://nico.ms/" + _ContentId;
+                return "http://nico.ms/" + _VideoUrl;
             }
             set
             {
@@ -55,19 +43,18 @@ namespace NicoV3.Mvvm.Model
                 {
                     value = value.Split('/').Last();
                 }
-                SetProperty(ref _ContentId, value);
+                SetProperty(ref _VideoUrl, value);
             }
         }
-        private string _ContentId = null;
+        private string _VideoUrl = null;
 
         /// <summary>
         /// 動画ID
         /// </summary>
         public string VideoId
         {
-            get { return ContentId.Split('/').Last(); }
+            get { return VideoUrl.Split('/').Last(); }
         }
-
 
         /// <summary>
         /// ﾀｲﾄﾙ
@@ -175,7 +162,14 @@ namespace NicoV3.Mvvm.Model
         public string ThumbnailUrl
         {
             get { return _ThumbnailUrl; }
-            set { SetProperty(ref _ThumbnailUrl, value); Thumbnail = null; }
+            set
+            {
+                if (_ThumbnailUrl != value)
+                {
+                    SetProperty(ref _ThumbnailUrl, value);
+                    Thumbnail = null;
+                }
+            }
         }
         private string _ThumbnailUrl = null;
 
@@ -228,16 +222,42 @@ namespace NicoV3.Mvvm.Model
         public string LastResBody
         {
             get { return _LastResBody; }
-            set { SetProperty(ref _LastResBody, value); }
+            set
+            {
+                if (!string.IsNullOrWhiteSpace(value))
+                {
+                    SetProperty(ref _LastResBody, value);
+                }
+            }
         }
         private string _LastResBody = null;
+
+        /// <summary>
+        /// ﾋﾞﾃﾞｵ情報を読み取ります。
+        /// </summary>
+        public void Reload()
+        {
+            // ﾋﾞﾃﾞｵ詳細情報取得
+            var url = string.Format(Constants.VideoDetailUrl, this.VideoId);
+            var txt = GetSmileVideoHtmlText(url);
+            var xml = XDocument.Load(new StringReader(txt)).Root.Element("thumb");
+
+            Title = xml.Element("title").Value;
+            ViewCounter = long.Parse(xml.Element("view_counter").Value);
+            MylistCounter = long.Parse(xml.Element("mylist_counter").Value);
+            CommentCounter = long.Parse(xml.Element("comment_num").Value);
+            StartTime = DateTime.Parse(xml.Element("first_retrieve").Value);
+            ThumbnailUrl = xml.Element("thumbnail_url").Value;
+            LengthSeconds = NicoDataConverter.ToLengthSeconds(xml.Element("length").Value);
+            LastResBody = xml.Element("last_res_body").Value;
+        }
 
         /// <summary>
         /// ｺﾝﾃﾝﾂをﾌﾞﾗｳｻﾞ起動する。
         /// </summary>
         public void StartBrowser()
         {
-            Process.Start(Variables.BrowserPath, ContentId);
+            Process.Start(Variables.BrowserPath, VideoUrl);
         }
     }
 }

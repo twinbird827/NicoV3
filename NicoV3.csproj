@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="StatefulModel, Version=0.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\StatefulModel.0.6.0\lib\portable-net45+win+wp80+MonoAndroid10+xamarinios10+MonoTouch10\StatefulModel.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
@@ -73,9 +76,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Mvvm\Model\ComboboxItem\ComboboxItemModel.cs" />
+    <Compile Include="Mvvm\Model\ComboboxItem\ComboRankCategoryModel.cs" />
+    <Compile Include="Mvvm\Model\ComboboxItem\ComboRankPeriodModel.cs" />
+    <Compile Include="Mvvm\Model\ComboboxItem\ComboRankTargetModel.cs" />
+    <Compile Include="Mvvm\Model\ComboboxItem\ComboSortMylistModel.cs" />
+    <Compile Include="Mvvm\Model\ComboboxItem\ComboSortVideoModel.cs" />
     <Compile Include="Mvvm\Model\HttpModel.cs" />
     <Compile Include="Mvvm\Model\LoginModel.cs" />
+    <Compile Include="Mvvm\Model\MenuItemModel.cs" />
+    <Compile Include="Mvvm\Model\MenuItemType.cs" />
+    <Compile Include="Mvvm\Model\MenuModel.cs" />
+    <Compile Include="Mvvm\Model\MylistModel.cs" />
+    <Compile Include="Mvvm\Model\MylistStatusModel.cs" />
+    <Compile Include="Mvvm\Model\SearchByMylistMineModel.cs" />
+    <Compile Include="Mvvm\Model\SearchByMylistModel.cs" />
+    <Compile Include="Mvvm\Model\SearchByRankingModel.cs" />
+    <Compile Include="Mvvm\Model\SearchByTemporaryModel.cs" />
+    <Compile Include="Mvvm\Model\SearchByWordModel.cs" />
     <Compile Include="Mvvm\Model\VideoModel.cs" />
+    <Compile Include="Mvvm\Model\VideoStatusModel.cs" />
     <Compile Include="Mvvm\Service\ConsoleMessageService.cs" />
     <Compile Include="Mvvm\Service\IMessageService.cs" />
     <Compile Include="Mvvm\Service\ServiceFactory.cs" />
@@ -96,6 +115,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
