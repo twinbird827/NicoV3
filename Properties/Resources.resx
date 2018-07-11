@@ -46,7 +46,7 @@
     
     mimetype: application/x-microsoft.net.object.binary.base64
     value   : The object must be serialized with 
-            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
     
     mimetype: application/x-microsoft.net.object.soap.base64
@@ -60,6 +60,7 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
@@ -68,9 +69,10 @@
               <xsd:sequence>
                 <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="name" use="required" type="xsd:string" />
               <xsd:attribute name="type" type="xsd:string" />
               <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
@@ -85,9 +87,10 @@
                 <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
                 <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
               <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
               <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
@@ -109,9 +112,171 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="RANK_CATEGORY_ALL" xml:space="preserve">
+    <value>all</value>
+  </data>
+  <data name="RANK_CATEGORY_ANIMAL" xml:space="preserve">
+    <value>animal</value>
+  </data>
+  <data name="RANK_CATEGORY_ANIME" xml:space="preserve">
+    <value>anime</value>
+  </data>
+  <data name="RANK_CATEGORY_CHAT" xml:space="preserve">
+    <value>chat</value>
+  </data>
+  <data name="RANK_CATEGORY_COOKING" xml:space="preserve">
+    <value>cooking</value>
+  </data>
+  <data name="RANK_CATEGORY_DANCE" xml:space="preserve">
+    <value>dance</value>
+  </data>
+  <data name="RANK_CATEGORY_DIARY" xml:space="preserve">
+    <value>diary</value>
+  </data>
+  <data name="RANK_CATEGORY_ENT" xml:space="preserve">
+    <value>ent</value>
+  </data>
+  <data name="RANK_CATEGORY_GAME" xml:space="preserve">
+    <value>game</value>
+  </data>
+  <data name="RANK_CATEGORY_HISTORY" xml:space="preserve">
+    <value>history</value>
+  </data>
+  <data name="RANK_CATEGORY_LECTURE" xml:space="preserve">
+    <value>lecture</value>
+  </data>
+  <data name="RANK_CATEGORY_MUSIC" xml:space="preserve">
+    <value>music</value>
+  </data>
+  <data name="RANK_CATEGORY_NATURE" xml:space="preserve">
+    <value>nature</value>
+  </data>
+  <data name="RANK_CATEGORY_OTHER" xml:space="preserve">
+    <value>other</value>
+  </data>
+  <data name="RANK_CATEGORY_PLAY" xml:space="preserve">
+    <value>play</value>
+  </data>
+  <data name="RANK_CATEGORY_POLITICS" xml:space="preserve">
+    <value>politics</value>
+  </data>
+  <data name="RANK_CATEGORY_QUE" xml:space="preserve">
+    <value>que</value>
+  </data>
+  <data name="RANK_CATEGORY_R18" xml:space="preserve">
+    <value>r18</value>
+  </data>
+  <data name="RANK_CATEGORY_RADIO" xml:space="preserve">
+    <value>radio</value>
+  </data>
+  <data name="RANK_CATEGORY_SCIENCE" xml:space="preserve">
+    <value>science</value>
+  </data>
+  <data name="RANK_CATEGORY_SING" xml:space="preserve">
+    <value>sing</value>
+  </data>
+  <data name="RANK_CATEGORY_SPORT" xml:space="preserve">
+    <value>sport</value>
+  </data>
+  <data name="RANK_CATEGORY_TEST" xml:space="preserve">
+    <value>test</value>
+  </data>
+  <data name="RANK_CATEGORY_TW" xml:space="preserve">
+    <value>tw</value>
+  </data>
+  <data name="RANK_PERIOD_DAILY" xml:space="preserve">
+    <value>daily</value>
+  </data>
+  <data name="RANK_PERIOD_HOURLY" xml:space="preserve">
+    <value>hourly</value>
+  </data>
+  <data name="RANK_PERIOD_MONTHLY" xml:space="preserve">
+    <value>monthly</value>
+  </data>
+  <data name="RANK_PERIOD_TOTAL" xml:space="preserve">
+    <value>total</value>
+  </data>
+  <data name="RANK_PERIOD_WEEKLY" xml:space="preserve">
+    <value>weekly</value>
+  </data>
+  <data name="RANK_TARGET_FAV" xml:space="preserve">
+    <value>fav</value>
+  </data>
+  <data name="RANK_TARGET_MYLIST" xml:space="preserve">
+    <value>mylist</value>
+  </data>
+  <data name="RANK_TARGET_RES" xml:space="preserve">
+    <value>res</value>
+  </data>
+  <data name="RANK_TARGET_VIEW" xml:space="preserve">
+    <value>view</value>
+  </data>
+  <data name="SORT_COMMENT0" xml:space="preserve">
+    <value>コメントが新しい順</value>
+  </data>
+  <data name="SORT_COMMENT1" xml:space="preserve">
+    <value>コメントが古い順</value>
+  </data>
+  <data name="SORT_COMMENTRES0" xml:space="preserve">
+    <value>コメントが多い順</value>
+  </data>
+  <data name="SORT_COMMENTRES1" xml:space="preserve">
+    <value>コメントが少ない順</value>
+  </data>
+  <data name="SORT_LENGTH0" xml:space="preserve">
+    <value>再生時間が長い順</value>
+  </data>
+  <data name="SORT_LENGTH1" xml:space="preserve">
+    <value>再生時間が短い順</value>
+  </data>
+  <data name="SORT_MYCOMMENT0" xml:space="preserve">
+    <value>マイリストコメント昇順</value>
+  </data>
+  <data name="SORT_MYCOMMENT1" xml:space="preserve">
+    <value>マイリストコメント降順</value>
+  </data>
+  <data name="SORT_MYREG0" xml:space="preserve">
+    <value>登録が古い順</value>
+  </data>
+  <data name="SORT_MYREG1" xml:space="preserve">
+    <value>登録が新しい順</value>
+  </data>
+  <data name="SORT_MYREGRES0" xml:space="preserve">
+    <value>マイリスト登録が多い順</value>
+  </data>
+  <data name="SORT_MYREGRES1" xml:space="preserve">
+    <value>マイリスト登録が少ない順</value>
+  </data>
+  <data name="SORT_TITLE0" xml:space="preserve">
+    <value>タイトル昇順</value>
+  </data>
+  <data name="SORT_TITLE1" xml:space="preserve">
+    <value>タイトル降順</value>
+  </data>
+  <data name="SORT_UPLOAD0" xml:space="preserve">
+    <value>投稿が新しい順</value>
+  </data>
+  <data name="SORT_UPLOAD1" xml:space="preserve">
+    <value>投稿が古い順</value>
+  </data>
+  <data name="SORT_VIEWRES0" xml:space="preserve">
+    <value>再生数が多い順</value>
+  </data>
+  <data name="SORT_VIEWRES1" xml:space="preserve">
+    <value>再生数が少ない順</value>
+  </data>
+  <data name="THUMB_SIZE_L" xml:space="preserve">
+    <value>サムネ大</value>
+  </data>
+  <data name="THUMB_SIZE_M" xml:space="preserve">
+    <value>サムネ中</value>
+  </data>
+  <data name="THUMB_SIZE_S" xml:space="preserve">
+    <value>サムネ小</value>
+  </data>
 </root>

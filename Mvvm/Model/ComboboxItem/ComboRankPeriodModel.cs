@@ -12,6 +12,11 @@ namespace NicoV3.Mvvm.Model.ComboboxItem
     public class ComboRankPeriodModel : BindableBase
     {
         /// <summary>
+        /// ｲﾝｽﾀﾝｽ (ｼﾝｸﾞﾙﾄﾝﾊﾟﾀｰﾝ)
+        /// </summary>
+        public static ComboRankPeriodModel Instance { get; } = new ComboRankPeriodModel();
+
+        /// <summary>
         /// ｿｰﾄﾘｽﾄ構成
         /// </summary>
         public ObservableSynchronizedCollection<ComboboxItemModel> Items
@@ -21,31 +26,15 @@ namespace NicoV3.Mvvm.Model.ComboboxItem
         }
         private ObservableSynchronizedCollection<ComboboxItemModel> _Items;
 
-        /// <summary>
-        /// ｲﾝｽﾀﾝｽ (ｼﾝｸﾞﾙﾄﾝﾊﾟﾀｰﾝ)
-        /// </summary>
-        public static ComboRankPeriodModel Instance
-        {
-            get
-            {
-                if (_Instance == null)
-                {
-                    _Instance = new ComboRankPeriodModel();
-                }
-                return _Instance;
-            }
-        }
-        private static ComboRankPeriodModel _Instance;
-
         private ComboRankPeriodModel()
         {
             _Items = new ObservableSynchronizedCollection<ComboboxItemModel>
             {
-                new ComboboxItemModel() { Value = "hourly", Description = Resources.VM01058 },
-                new ComboboxItemModel() { Value = "daily", Description = Resources.VM01059 },
-                new ComboboxItemModel() { Value = "weekly", Description = Resources.VM01060 },
-                new ComboboxItemModel() { Value = "monthly", Description = Resources.VM01061 },
-                new ComboboxItemModel() { Value = "total", Description = Resources.VM01062 },
+                new ComboboxItemModel() { Value = "hourly", Description = Resources.RANK_PERIOD_HOURLY },
+                new ComboboxItemModel() { Value = "daily", Description = Resources.RANK_PERIOD_DAILY },
+                new ComboboxItemModel() { Value = "weekly", Description = Resources.RANK_PERIOD_WEEKLY },
+                new ComboboxItemModel() { Value = "monthly", Description = Resources.RANK_PERIOD_MONTHLY },
+                new ComboboxItemModel() { Value = "total", Description = Resources.RANK_PERIOD_TOTAL },
             };
         }
     }

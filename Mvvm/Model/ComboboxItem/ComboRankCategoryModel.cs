@@ -12,6 +12,11 @@ namespace NicoV3.Mvvm.Model.ComboboxItem
     public class ComboRankCategoryModel : BindableBase
     {
         /// <summary>
+        /// ｲﾝｽﾀﾝｽ (ｼﾝｸﾞﾙﾄﾝﾊﾟﾀｰﾝ)
+        /// </summary>
+        public static ComboRankCategoryModel Instance { get; } = new ComboRankCategoryModel();
+
+        /// <summary>
         /// ｿｰﾄﾘｽﾄ構成
         /// </summary>
         public ObservableSynchronizedCollection<ComboboxItemModel> Items
@@ -21,50 +26,34 @@ namespace NicoV3.Mvvm.Model.ComboboxItem
         }
         private ObservableSynchronizedCollection<ComboboxItemModel> _Items;
 
-        /// <summary>
-        /// ｲﾝｽﾀﾝｽ (ｼﾝｸﾞﾙﾄﾝﾊﾟﾀｰﾝ)
-        /// </summary>
-        public static ComboRankCategoryModel Instance
-        {
-            get
-            {
-                if (_Instance == null)
-                {
-                    _Instance = new ComboRankCategoryModel();
-                }
-                return _Instance;
-            }
-        }
-        private static ComboRankCategoryModel _Instance;
-
         private ComboRankCategoryModel()
         {
             _Items = new ObservableSynchronizedCollection<ComboboxItemModel>
             {
-                new ComboboxItemModel() { Value = "all", Description = Resources.VM01034 },
-                new ComboboxItemModel() { Value = "music", Description = Resources.VM01035 },
-                new ComboboxItemModel() { Value = "ent", Description = Resources.VM01036 },
-                new ComboboxItemModel() { Value = "anime", Description = Resources.VM01037 },
-                new ComboboxItemModel() { Value = "game", Description = Resources.VM01038 },
-                new ComboboxItemModel() { Value = "animal", Description = Resources.VM01039 },
-                new ComboboxItemModel() { Value = "que", Description = Resources.VM01040 },
-                new ComboboxItemModel() { Value = "radio", Description = Resources.VM01041 },
-                new ComboboxItemModel() { Value = "sport", Description = Resources.VM01042 },
-                new ComboboxItemModel() { Value = "politics", Description = Resources.VM01043 },
-                new ComboboxItemModel() { Value = "chat", Description = Resources.VM01044 },
-                new ComboboxItemModel() { Value = "science", Description = Resources.VM01045 },
-                new ComboboxItemModel() { Value = "history", Description = Resources.VM01046 },
-                new ComboboxItemModel() { Value = "cooking", Description = Resources.VM01047 },
-                new ComboboxItemModel() { Value = "nature", Description = Resources.VM01048 },
-                new ComboboxItemModel() { Value = "diary", Description = Resources.VM01049 },
-                new ComboboxItemModel() { Value = "dance", Description = Resources.VM01050 },
-                new ComboboxItemModel() { Value = "sing", Description = Resources.VM01051 },
-                new ComboboxItemModel() { Value = "play", Description = Resources.VM01052 },
-                new ComboboxItemModel() { Value = "lecture", Description = Resources.VM01053 },
-                new ComboboxItemModel() { Value = "tw", Description = Resources.VM01054 },
-                new ComboboxItemModel() { Value = "other", Description = Resources.VM01055 },
-                new ComboboxItemModel() { Value = "test", Description = Resources.VM01056 },
-                new ComboboxItemModel() { Value = "r18", Description = Resources.VM01057 },
+                new ComboboxItemModel() { Value = "all", Description = Resources.RANK_CATEGORY_MUSIC },
+                new ComboboxItemModel() { Value = "music", Description = Resources.RANK_CATEGORY_MUSIC },
+                new ComboboxItemModel() { Value = "ent", Description = Resources.RANK_CATEGORY_ENT },
+                new ComboboxItemModel() { Value = "anime", Description = Resources.RANK_CATEGORY_ANIME },
+                new ComboboxItemModel() { Value = "game", Description = Resources.RANK_CATEGORY_GAME },
+                new ComboboxItemModel() { Value = "animal", Description = Resources.RANK_CATEGORY_ANIMAL },
+                new ComboboxItemModel() { Value = "que", Description = Resources.RANK_CATEGORY_QUE },
+                new ComboboxItemModel() { Value = "radio", Description = Resources.RANK_CATEGORY_RADIO },
+                new ComboboxItemModel() { Value = "sport", Description = Resources.RANK_CATEGORY_SPORT },
+                new ComboboxItemModel() { Value = "politics", Description = Resources.RANK_CATEGORY_POLITICS },
+                new ComboboxItemModel() { Value = "chat", Description = Resources.RANK_CATEGORY_CHAT },
+                new ComboboxItemModel() { Value = "science", Description = Resources.RANK_CATEGORY_SCIENCE },
+                new ComboboxItemModel() { Value = "history", Description = Resources.RANK_CATEGORY_HISTORY },
+                new ComboboxItemModel() { Value = "cooking", Description = Resources.RANK_CATEGORY_COOKING },
+                new ComboboxItemModel() { Value = "nature", Description = Resources.RANK_CATEGORY_NATURE },
+                new ComboboxItemModel() { Value = "diary", Description = Resources.RANK_CATEGORY_DIARY },
+                new ComboboxItemModel() { Value = "dance", Description = Resources.RANK_CATEGORY_DANCE },
+                new ComboboxItemModel() { Value = "sing", Description = Resources.RANK_CATEGORY_SING },
+                new ComboboxItemModel() { Value = "play", Description = Resources.RANK_CATEGORY_PLAY },
+                new ComboboxItemModel() { Value = "lecture", Description = Resources.RANK_CATEGORY_LECTURE },
+                new ComboboxItemModel() { Value = "tw", Description = Resources.RANK_CATEGORY_TW },
+                new ComboboxItemModel() { Value = "other", Description = Resources.RANK_CATEGORY_OTHER },
+                new ComboboxItemModel() { Value = "test", Description = Resources.RANK_CATEGORY_TEST },
+                new ComboboxItemModel() { Value = "r18", Description = Resources.RANK_CATEGORY_R18 },
             };
         }
     }

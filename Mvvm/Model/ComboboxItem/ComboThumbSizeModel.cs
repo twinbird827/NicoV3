@@ -9,12 +9,12 @@ using WpfUtilV1.Mvvm;
 
 namespace NicoV3.Mvvm.Model.ComboboxItem
 {
-    public class ComboRankTargetModel : BindableBase
+    public class ComboThumbSizeModel : BindableBase
     {
         /// <summary>
         /// ｲﾝｽﾀﾝｽ (ｼﾝｸﾞﾙﾄﾝﾊﾟﾀｰﾝ)
         /// </summary>
-        public static ComboRankTargetModel Instance { get; } = new ComboRankTargetModel();
+        public static ComboThumbSizeModel Instance { get; } = new ComboThumbSizeModel();
 
         /// <summary>
         /// ｿｰﾄﾘｽﾄ構成
@@ -26,14 +26,13 @@ namespace NicoV3.Mvvm.Model.ComboboxItem
         }
         private ObservableSynchronizedCollection<ComboboxItemModel> _Items;
 
-        private ComboRankTargetModel()
+        private ComboThumbSizeModel()
         {
             _Items = new ObservableSynchronizedCollection<ComboboxItemModel>
             {
-                new ComboboxItemModel() { Value = "fav", Description = Resources.RANK_TARGET_FAV },
-                new ComboboxItemModel() { Value = "view", Description = Resources.RANK_TARGET_VIEW },
-                new ComboboxItemModel() { Value = "res", Description = Resources.RANK_TARGET_RES },
-                new ComboboxItemModel() { Value = "mylist", Description = Resources.RANK_TARGET_MYLIST },
+                new ComboboxItemModel() { Value = "", Description = Resources.THUMB_SIZE_S },
+                new ComboboxItemModel() { Value = ".M", Description = Resources.THUMB_SIZE_M },
+                new ComboboxItemModel() { Value = ".L", Description = Resources.THUMB_SIZE_L },
             };
         }
     }

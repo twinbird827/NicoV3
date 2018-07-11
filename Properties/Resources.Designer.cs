@@ -4,67 +4,545 @@
 //     ランタイム バージョン:4.0.30319.42000
 //
 //     このファイルへの変更は、以下の状況下で不正な動作の原因になったり、
-//     コードが再生成されるときに損失したりします
+//     コードが再生成されるときに損失したりします。
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NicoV3.Properties
-{
-
-
+namespace NicoV3.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   ローカライズされた文字列などを検索するための、厳密に型指定されたリソース クラスです。
     /// </summary>
-    // このクラスは StronglyTypedResourceBuilder クラスによって ResGen
+    // このクラスは StronglyTypedResourceBuilder クラスが ResGen
     // または Visual Studio のようなツールを使用して自動生成されました。
     // メンバーを追加または削除するには、.ResX ファイルを編集して、/str オプションと共に
-    // ResGen を実行し直すか、または VS プロジェクトをリビルドします。
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    // ResGen を実行し直すか、または VS プロジェクトをビルドし直します。
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources
-    {
-
+    internal class Resources {
+        
         private static global::System.Resources.ResourceManager resourceMan;
-
+        
         private static global::System.Globalization.CultureInfo resourceCulture;
-
+        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources()
-        {
+        internal Resources() {
         }
-
+        
         /// <summary>
-        ///   このクラスで使用されるキャッシュされた ResourceManager インスタンスを返します。
+        ///   このクラスで使用されているキャッシュされた ResourceManager インスタンスを返します。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager
-        {
-            get
-            {
-                if ((resourceMan == null))
-                {
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("NicoV3.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-
+        
         /// <summary>
         ///   厳密に型指定されたこのリソース クラスを使用して、すべての検索リソースに対し、
         ///   現在のスレッドの CurrentUICulture プロパティをオーバーライドします。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture
-        {
-            get
-            {
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
                 return resourceCulture;
             }
-            set
-            {
+            set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   all に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string RANK_CATEGORY_ALL {
+            get {
+                return ResourceManager.GetString("RANK_CATEGORY_ALL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   animal に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string RANK_CATEGORY_ANIMAL {
+            get {
+                return ResourceManager.GetString("RANK_CATEGORY_ANIMAL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   anime に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string RANK_CATEGORY_ANIME {
+            get {
+                return ResourceManager.GetString("RANK_CATEGORY_ANIME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   chat に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string RANK_CATEGORY_CHAT {
+            get {
+                return ResourceManager.GetString("RANK_CATEGORY_CHAT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   cooking に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string RANK_CATEGORY_COOKING {
+            get {
+                return ResourceManager.GetString("RANK_CATEGORY_COOKING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   dance に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string RANK_CATEGORY_DANCE {
+            get {
+                return ResourceManager.GetString("RANK_CATEGORY_DANCE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   diary に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string RANK_CATEGORY_DIARY {
+            get {
+                return ResourceManager.GetString("RANK_CATEGORY_DIARY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   ent に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string RANK_CATEGORY_ENT {
+            get {
+                return ResourceManager.GetString("RANK_CATEGORY_ENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   game に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string RANK_CATEGORY_GAME {
+            get {
+                return ResourceManager.GetString("RANK_CATEGORY_GAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   history に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string RANK_CATEGORY_HISTORY {
+            get {
+                return ResourceManager.GetString("RANK_CATEGORY_HISTORY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   lecture に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string RANK_CATEGORY_LECTURE {
+            get {
+                return ResourceManager.GetString("RANK_CATEGORY_LECTURE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   music に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string RANK_CATEGORY_MUSIC {
+            get {
+                return ResourceManager.GetString("RANK_CATEGORY_MUSIC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   nature に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string RANK_CATEGORY_NATURE {
+            get {
+                return ResourceManager.GetString("RANK_CATEGORY_NATURE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   other に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string RANK_CATEGORY_OTHER {
+            get {
+                return ResourceManager.GetString("RANK_CATEGORY_OTHER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   play に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string RANK_CATEGORY_PLAY {
+            get {
+                return ResourceManager.GetString("RANK_CATEGORY_PLAY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   politics に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string RANK_CATEGORY_POLITICS {
+            get {
+                return ResourceManager.GetString("RANK_CATEGORY_POLITICS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   que に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string RANK_CATEGORY_QUE {
+            get {
+                return ResourceManager.GetString("RANK_CATEGORY_QUE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   r18 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string RANK_CATEGORY_R18 {
+            get {
+                return ResourceManager.GetString("RANK_CATEGORY_R18", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   radio に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string RANK_CATEGORY_RADIO {
+            get {
+                return ResourceManager.GetString("RANK_CATEGORY_RADIO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   science に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string RANK_CATEGORY_SCIENCE {
+            get {
+                return ResourceManager.GetString("RANK_CATEGORY_SCIENCE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   sing に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string RANK_CATEGORY_SING {
+            get {
+                return ResourceManager.GetString("RANK_CATEGORY_SING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   sport に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string RANK_CATEGORY_SPORT {
+            get {
+                return ResourceManager.GetString("RANK_CATEGORY_SPORT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   test に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string RANK_CATEGORY_TEST {
+            get {
+                return ResourceManager.GetString("RANK_CATEGORY_TEST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   tw に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string RANK_CATEGORY_TW {
+            get {
+                return ResourceManager.GetString("RANK_CATEGORY_TW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   daily に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string RANK_PERIOD_DAILY {
+            get {
+                return ResourceManager.GetString("RANK_PERIOD_DAILY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   hourly に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string RANK_PERIOD_HOURLY {
+            get {
+                return ResourceManager.GetString("RANK_PERIOD_HOURLY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   monthly に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string RANK_PERIOD_MONTHLY {
+            get {
+                return ResourceManager.GetString("RANK_PERIOD_MONTHLY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   total に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string RANK_PERIOD_TOTAL {
+            get {
+                return ResourceManager.GetString("RANK_PERIOD_TOTAL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   weekly に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string RANK_PERIOD_WEEKLY {
+            get {
+                return ResourceManager.GetString("RANK_PERIOD_WEEKLY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   fav に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string RANK_TARGET_FAV {
+            get {
+                return ResourceManager.GetString("RANK_TARGET_FAV", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   mylist に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string RANK_TARGET_MYLIST {
+            get {
+                return ResourceManager.GetString("RANK_TARGET_MYLIST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   res に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string RANK_TARGET_RES {
+            get {
+                return ResourceManager.GetString("RANK_TARGET_RES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   view に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string RANK_TARGET_VIEW {
+            get {
+                return ResourceManager.GetString("RANK_TARGET_VIEW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   コメントが新しい順 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string SORT_COMMENT0 {
+            get {
+                return ResourceManager.GetString("SORT_COMMENT0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   コメントが古い順 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string SORT_COMMENT1 {
+            get {
+                return ResourceManager.GetString("SORT_COMMENT1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   コメントが多い順 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string SORT_COMMENTRES0 {
+            get {
+                return ResourceManager.GetString("SORT_COMMENTRES0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   コメントが少ない順 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string SORT_COMMENTRES1 {
+            get {
+                return ResourceManager.GetString("SORT_COMMENTRES1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   再生時間が長い順 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string SORT_LENGTH0 {
+            get {
+                return ResourceManager.GetString("SORT_LENGTH0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   再生時間が短い順 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string SORT_LENGTH1 {
+            get {
+                return ResourceManager.GetString("SORT_LENGTH1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   マイリストコメント昇順 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string SORT_MYCOMMENT0 {
+            get {
+                return ResourceManager.GetString("SORT_MYCOMMENT0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   マイリストコメント降順 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string SORT_MYCOMMENT1 {
+            get {
+                return ResourceManager.GetString("SORT_MYCOMMENT1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   登録が古い順 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string SORT_MYREG0 {
+            get {
+                return ResourceManager.GetString("SORT_MYREG0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   登録が新しい順 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string SORT_MYREG1 {
+            get {
+                return ResourceManager.GetString("SORT_MYREG1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   マイリスト登録が多い順 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string SORT_MYREGRES0 {
+            get {
+                return ResourceManager.GetString("SORT_MYREGRES0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   マイリスト登録が少ない順 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string SORT_MYREGRES1 {
+            get {
+                return ResourceManager.GetString("SORT_MYREGRES1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   タイトル昇順 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string SORT_TITLE0 {
+            get {
+                return ResourceManager.GetString("SORT_TITLE0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   タイトル降順 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string SORT_TITLE1 {
+            get {
+                return ResourceManager.GetString("SORT_TITLE1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   投稿が新しい順 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string SORT_UPLOAD0 {
+            get {
+                return ResourceManager.GetString("SORT_UPLOAD0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   投稿が古い順 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string SORT_UPLOAD1 {
+            get {
+                return ResourceManager.GetString("SORT_UPLOAD1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   再生数が多い順 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string SORT_VIEWRES0 {
+            get {
+                return ResourceManager.GetString("SORT_VIEWRES0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   再生数が少ない順 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string SORT_VIEWRES1 {
+            get {
+                return ResourceManager.GetString("SORT_VIEWRES1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   サムネ大 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string THUMB_SIZE_L {
+            get {
+                return ResourceManager.GetString("THUMB_SIZE_L", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   サムネ中 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string THUMB_SIZE_M {
+            get {
+                return ResourceManager.GetString("THUMB_SIZE_M", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   サムネ小 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string THUMB_SIZE_S {
+            get {
+                return ResourceManager.GetString("THUMB_SIZE_S", resourceCulture);
             }
         }
     }

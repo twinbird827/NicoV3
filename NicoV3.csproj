@@ -34,12 +34,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ControlzEx, Version=3.0.2.4, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\ControlzEx.3.0.2.4\lib\net45\ControlzEx.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro, Version=1.6.5.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\MahApps.Metro.1.6.5\lib\net46\MahApps.Metro.dll</HintPath>
+    </Reference>
     <Reference Include="StatefulModel, Version=0.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\StatefulModel.0.6.0\lib\portable-net45+win+wp80+MonoAndroid10+xamarinios10+MonoTouch10\StatefulModel.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\ControlzEx.3.0.2.4\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -73,6 +83,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Mvvm\View\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Mvvm\Model\ComboboxItem\ComboboxItemModel.cs" />
@@ -81,6 +95,7 @@
     <Compile Include="Mvvm\Model\ComboboxItem\ComboRankTargetModel.cs" />
     <Compile Include="Mvvm\Model\ComboboxItem\ComboSortMylistModel.cs" />
     <Compile Include="Mvvm\Model\ComboboxItem\ComboSortVideoModel.cs" />
+    <Compile Include="Mvvm\Model\ComboboxItem\ComboThumbSizeModel.cs" />
     <Compile Include="Mvvm\Model\HttpModel.cs" />
     <Compile Include="Mvvm\Model\LoginModel.cs" />
     <Compile Include="Mvvm\Model\MenuItemModel.cs" />
@@ -98,6 +113,21 @@
     <Compile Include="Mvvm\Service\ConsoleMessageService.cs" />
     <Compile Include="Mvvm\Service\IMessageService.cs" />
     <Compile Include="Mvvm\Service\ServiceFactory.cs" />
+    <Compile Include="Mvvm\ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="Mvvm\ViewModel\MylistViewModel.cs" />
+    <Compile Include="Mvvm\ViewModel\SearchByMylistItemViewModel.cs" />
+    <Compile Include="Mvvm\ViewModel\SearchByMylistViewModel.cs" />
+    <Compile Include="Mvvm\ViewModel\SearchByRankingItemViewModel.cs" />
+    <Compile Include="Mvvm\ViewModel\SearchByRankingViewModel.cs" />
+    <Compile Include="Mvvm\ViewModel\SearchByTemporaryItemViewModel.cs" />
+    <Compile Include="Mvvm\ViewModel\SearchByTemporaryViewModel.cs" />
+    <Compile Include="Mvvm\ViewModel\SearchByWordItemViewModel.cs" />
+    <Compile Include="Mvvm\ViewModel\SearchByWordViewModel.cs" />
+    <Compile Include="Mvvm\ViewModel\VideoViewModel.cs" />
+    <Compile Include="Mvvm\ViewModel\WorkSpaceViewModel.cs" />
+    <Compile Include="Mvvm\View\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -130,9 +160,6 @@
       <Name>WpfUtilV1</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Mvvm\ViewModel\" />
-    <Folder Include="Mvvm\View\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
