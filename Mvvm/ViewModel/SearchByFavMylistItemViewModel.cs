@@ -7,18 +7,19 @@ using System.Threading.Tasks;
 
 namespace NicoV3.Mvvm.ViewModel
 {
-    public class SearchByWordItemViewModel : VideoViewModel
+    public class SearchByFavMylistItemViewModel : MylistViewModel
     {
-        public SearchByWordItemViewModel(string id)
+        public SearchByFavMylistItemViewModel(string id)
             : base(id)
         {
 
         }
 
-        public SearchByWordItemViewModel(VideoModel model)
+        public SearchByFavMylistItemViewModel(MylistModel model)
             : base(model)
         {
 
         }
+
     }
 }

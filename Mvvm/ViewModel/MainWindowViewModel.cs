@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MahApps.Metro.Controls.Dialogs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,11 @@ namespace NicoV3.Mvvm.ViewModel
 
             Instance = this;
         }
+
+        /// <summary>
+        /// ﾀﾞｲｱﾛｸﾞ表示用ｲﾝｽﾀﾝｽ
+        /// </summary>
+        public IDialogCoordinator DialogCoordinator { get; set; }
 
         /// <summary>
         /// ｶﾚﾝﾄﾜｰｸｽﾍﾟｰｽ
