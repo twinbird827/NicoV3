@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace NicoV3
+namespace NicoV3.Mvvm.View
 {
     /// <summary>
-    /// MainWindow.xaml の相互作用ロジック
+    /// SearchByFavMylistWindow.xaml の相互作用ロジック
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SearchByFavMylistWindow : UserControl
     {
-        public MainWindow()
+        public SearchByFavMylistWindow()
         {
             InitializeComponent();
         }

@@ -15,9 +15,10 @@ namespace NicoV3.Mvvm.ViewModel
 {
     public class SearchByMylistViewModel : WorkSpaceViewModel
     {
-        public SearchByMylistModel Source { get; set; }
+        private SearchByMylistModel Source { get; set; }
 
         public SearchByMylistViewModel()
+            : this(new SearchByMylistModel())
         {
 
         }
@@ -25,6 +26,7 @@ namespace NicoV3.Mvvm.ViewModel
         public SearchByMylistViewModel(SearchByMylistModel model)
         {
             Source = model;
+
             this.MylistTitle = Source.MylistTitle;
             this.MylistCreator = Source.MylistCreator;
             this.MylistDescription = Source.MylistDescription;

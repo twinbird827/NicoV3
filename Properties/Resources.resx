@@ -117,6 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="L_ADD_CHILDREN" xml:space="preserve">
+    <value>Add Children</value>
+  </data>
+  <data name="L_CANCEL" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="L_MENU" xml:space="preserve">
+    <value>Menu</value>
+  </data>
+  <data name="L_OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="L_REMOVE" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="L_RENAME" xml:space="preserve">
+    <value>Rename</value>
+  </data>
   <data name="RANK_CATEGORY_ALL" xml:space="preserve">
     <value>all</value>
   </data>

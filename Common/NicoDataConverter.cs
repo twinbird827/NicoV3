@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,8 @@ namespace NicoV3.Common
 {
     public class NicoDataConverter
     {
+        private static Stopwatch LastGetThumnail { get; set; } = new Stopwatch();
+
         public static DateTime ToDatetime(string value)
         {
             if (string.IsNullOrEmpty(value))
@@ -52,7 +55,20 @@ namespace NicoV3.Common
         /// <returns>ｻﾑﾈｲﾙ画像</returns>
         public static async Task<BitmapImage> ToThumbnail(string url)
         {
-            return await HttpUtil.DownloadImageAsync(url, App.Current.Dispatcher);
+            
+            return 
+                await Task.Run(async () => 
+                {
+                    if (LastGetThumnail.IsRunning)
+                    {
+                        while (LastGetThumnail.ElapsedMilliseconds < 500) { }
+                    }
+                    LastGetThumnail.Restart();
+
+                    return await HttpUtil.DownloadImageAsync(url, App.Current.Dispatcher);
+                });
+            
+            //return await HttpUtil.DownloadImageAsync(url, App.Current.Dispatcher);
         }
 
         /// <summary>

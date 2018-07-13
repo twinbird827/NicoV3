@@ -8,6 +8,9 @@
         xmlns:vm="clr-namespace:NicoV3.Mvvm.ViewModel"
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+        xmlns:properties="clr-namespace:NicoV3.Properties"
+        xmlns:model="clr-namespace:NicoV3.Mvvm.Model"
+        xmlns:view="clr-namespace:WpfUtilV1.Mvvm.View;assembly=WpfUtilV1"
         Dialog:DialogParticipation.Register="{Binding}"
         Title="MainWindow" Height="450" Width="800"
         >
@@ -18,8 +21,143 @@
             </vm:MainWindowViewModel.DialogCoordinator>
         </vm:MainWindowViewModel>
     </Controls:MetroWindow.DataContext>
+
+    <Controls:MetroWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- TreeViewItemを幅いっぱいまで伸ばすためのResourceDictionary -->
+                <ResourceDictionary Source="pack://application:,,,/WpfUtilV1;component/Mvvm/View/TreeViewItemResourceDictionary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type vm:SettingViewModel}">
+                <local:SettingWindow />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:SearchByWordViewModel}">
+                <local:SearchByWordWindow />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:SearchByMylistViewModel}">
+                <local:SearchByMylistWindow />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:SearchByRankingViewModel}">
+                <local:SearchByRankingWindow />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:SearchByTemporaryViewModel}">
+                <local:SearchByTemporaryWindow />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:SearchByFavMylistViewModel}">
+                <local:SearchByFavMylistWindow />
+            </DataTemplate>
+
+        </ResourceDictionary>
+    </Controls:MetroWindow.Resources>
+    
+    <Controls:MetroWindow.Flyouts>
+        <Controls:FlyoutsControl>
+            <Controls:Flyout IsOpen="{Binding IsOpenFlyout}"
+                             Width="200"
+                             Header="{x:Static properties:Resources.L_MENU}"
+                             Position="Left">
+                <TreeView HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ItemsSource="{Binding MenuItems}" Margin="1" Padding="1">
+                    <TreeView.ItemContainerStyle>
+                        <Style TargetType="TreeViewItem" BasedOn="{StaticResource {x:Type TreeViewItem}}">
+                            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                            <Setter Property="VerticalAlignment" Value="Stretch"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+                            <Setter Property="IsExpanded" Value="True" />
+                            <Setter Property="view:ControlMouseDoubleClickBehavior.Command" Value="{Binding OnMouseDoubleClick}" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Type}" Value="MylistOfOther">
+                                    <Setter Property="ContextMenu">
+                                        <Setter.Value>
+                                            <ContextMenu>
+                                                <MenuItem Header="{x:Static properties:Resources.L_RENAME}" Command="{Binding OnRename}" />
+                                                <MenuItem Header="{x:Static properties:Resources.L_ADD_CHILDREN}" Command="{Binding OnAddChildren}" />
+                                                <MenuItem Header="{x:Static properties:Resources.L_REMOVE}" Command="{Binding OnRemove}" />
+                                            </ContextMenu>
+                                        </Setter.Value>
+                                    </Setter>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Type}" Value="SearchByMylist">
+                                    <Setter Property="ContextMenu">
+                                        <Setter.Value>
+                                            <ContextMenu>
+                                                <MenuItem Header="{x:Static properties:Resources.L_ADD_CHILDREN}" Command="{Binding OnAddChildren}" />
+                                            </ContextMenu>
+                                        </Setter.Value>
+                                    </Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TreeView.ItemContainerStyle>
+                    <TreeView.Resources>
+                        <HierarchicalDataTemplate DataType="{x:Type vm:MenuItemViewModel}" ItemsSource="{Binding Children}">
+                            <ContentControl>
+                                <Grid HorizontalAlignment="Stretch">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Content="{Binding Name}" VerticalAlignment="Center" />
+                                </Grid>
+                            </ContentControl>
+                        </HierarchicalDataTemplate>
+                    </TreeView.Resources>
+                </TreeView>
+            </Controls:Flyout>
+        </Controls:FlyoutsControl>
+    </Controls:MetroWindow.Flyouts>
     
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0">
+
+            <StackPanel Orientation="Vertical">
+
+                <Button Content="FullMenu"
+                    Command="{Binding OnOpenFlyout}" />
+
+                <Button Content="SearchByWord"
+                    Command="{Binding OnClickMenu}"
+                    CommandParameter="{x:Static model:MenuItemType.SearchByWord}" />
+
+                <Button Content="Ranking"
+                    Command="{Binding OnClickMenu}"
+                    CommandParameter="{x:Static model:MenuItemType.Ranking}" />
+
+                <Button Content="Temporary"
+                    Command="{Binding OnClickMenu}"
+                    CommandParameter="{x:Static model:MenuItemType.Temporary}" />
+
+                <Button Content="SearchByMylist"
+                    Command="{Binding OnClickMenu}"
+                    CommandParameter="{x:Static model:MenuItemType.SearchByMylist}" />
+
+                <Button Content="MylistOfMe"
+                    Command="{Binding OnClickMenu}"
+                    CommandParameter="{x:Static model:MenuItemType.MylistOfMe}" />
+
+                <Button Content="MylistOfOther"
+                    Command="{Binding OnClickMenu}"
+                    CommandParameter="{x:Static model:MenuItemType.MylistOfOther}" />
+
+                <Button Content="Setting"
+                    Command="{Binding OnClickMenu}"
+                    CommandParameter="{x:Static model:MenuItemType.Setting}" />
+
+            </StackPanel>
+
+        </Border>
+
+        <ContentControl Grid.Column="1"
+                        Content="{Binding Current}" />
     </Grid>
 </Controls:MetroWindow>

@@ -68,10 +68,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -79,11 +75,35 @@
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\NicoDataConverter.cs" />
     <Compile Include="Common\Variables.cs" />
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
+    <Page Include="Mvvm\View\Dialog\SimpleInputDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Mvvm\View\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Mvvm\View\SearchByFavMylistWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Mvvm\View\SearchByMylistWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Mvvm\View\SearchByRankingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Mvvm\View\SearchByTemporaryWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Mvvm\View\SearchByWordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Mvvm\View\SettingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -113,9 +133,9 @@
     <Compile Include="Mvvm\Service\ConsoleMessageService.cs" />
     <Compile Include="Mvvm\Service\IMessageService.cs" />
     <Compile Include="Mvvm\Service\ServiceFactory.cs" />
+    <Compile Include="Mvvm\ViewModel\Dialog\SimpleInputDialogViewModel.cs" />
     <Compile Include="Mvvm\ViewModel\MainWindowViewModel.cs" />
     <Compile Include="Mvvm\ViewModel\MenuItemViewModel.cs" />
-    <Compile Include="Mvvm\ViewModel\MenuViewModel.cs" />
     <Compile Include="Mvvm\ViewModel\MylistViewModel.cs" />
     <Compile Include="Mvvm\ViewModel\SearchByFavMylistItemViewModel.cs" />
     <Compile Include="Mvvm\ViewModel\SearchByFavMylistViewModel.cs" />
@@ -127,10 +147,32 @@
     <Compile Include="Mvvm\ViewModel\SearchByTemporaryViewModel.cs" />
     <Compile Include="Mvvm\ViewModel\SearchByWordItemViewModel.cs" />
     <Compile Include="Mvvm\ViewModel\SearchByWordViewModel.cs" />
+    <Compile Include="Mvvm\ViewModel\SettingViewModel.cs" />
     <Compile Include="Mvvm\ViewModel\VideoViewModel.cs" />
     <Compile Include="Mvvm\ViewModel\WorkSpaceViewModel.cs" />
+    <Compile Include="Mvvm\View\Dialog\SimpleInputDialog.xaml.cs">
+      <DependentUpon>SimpleInputDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Mvvm\View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Mvvm\View\SearchByFavMylistWindow.xaml.cs">
+      <DependentUpon>SearchByFavMylistWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Mvvm\View\SearchByMylistWindow.xaml.cs">
+      <DependentUpon>SearchByMylistWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Mvvm\View\SearchByRankingWindow.xaml.cs">
+      <DependentUpon>SearchByRankingWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Mvvm\View\SearchByTemporaryWindow.xaml.cs">
+      <DependentUpon>SearchByTemporaryWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Mvvm\View\SearchByWordWindow.xaml.cs">
+      <DependentUpon>SearchByWordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Mvvm\View\SettingWindow.xaml.cs">
+      <DependentUpon>SettingWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -146,7 +188,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />

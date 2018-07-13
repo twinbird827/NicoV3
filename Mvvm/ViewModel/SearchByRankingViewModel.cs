@@ -16,12 +16,13 @@ namespace NicoV3.Mvvm.ViewModel
         /// <summary>
         /// 本ｲﾝｽﾀﾝｽのﾃﾞｰﾀ実体
         /// </summary>
-        public SearchByRankingModel Source { get; set; }
+        private SearchByRankingModel Source { get; set; }
 
         /// <summary>
         /// ｺﾝｽﾄﾗｸﾀ
         /// </summary>
-        public SearchByRankingViewModel() : this(SearchByRankingModel.Instance)
+        public SearchByRankingViewModel() 
+            : this(SearchByRankingModel.Instance)
         {
 
         }

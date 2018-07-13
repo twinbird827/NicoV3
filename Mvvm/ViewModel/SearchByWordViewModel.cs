@@ -17,7 +17,7 @@ namespace NicoV3.Mvvm.ViewModel
         /// <summary>
         /// 本ｲﾝｽﾀﾝｽのﾃﾞｰﾀ実体
         /// </summary>
-        public SearchByWordModel Source { get; set; }
+        private SearchByWordModel Source { get; set; }
 
         /// <summary>
         /// ｺﾝｽﾄﾗｸﾀ

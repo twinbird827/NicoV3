@@ -13,7 +13,7 @@ namespace NicoV3.Mvvm.ViewModel
         /// <summary>
         /// 本ｲﾝｽﾀﾝｽのﾃﾞｰﾀ実体
         /// </summary>
-        public SearchByTemporaryModel Source { get; set; }
+        private SearchByTemporaryModel Source { get; set; }
 
         /// <summary>
         /// ｺﾝｽﾄﾗｸﾀ
