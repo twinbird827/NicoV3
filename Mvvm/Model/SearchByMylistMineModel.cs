@@ -39,6 +39,7 @@ namespace NicoV3.Mvvm.Model
             if (!LoginModel.Instance.IsLogin)
             {
                 ServiceFactory.MessageService.Error("Login error");
+                return;
             }
 
             Mylists.Clear();

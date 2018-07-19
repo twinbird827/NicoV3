@@ -113,5 +113,22 @@ namespace NicoV3.Mvvm.ViewModel
         }
         public ICommand _OnOpenFlyout;
 
+        public async Task<MessageDialogResult> ShowMessageAsync(string title, string message, MessageDialogStyle style = MessageDialogStyle.Affirmative, MetroDialogSettings settings = null)
+        {
+            return await DialogCoordinator.ShowMessageAsync(this, title, message, style, settings);
+        }
+
+        public async Task<string> ShowInputAsync(string title, string message, MetroDialogSettings settings = null)
+        {
+            return await DialogCoordinator.ShowInputAsync(this, title, message, settings);
+        }
+
+        protected override void OnDisposed()
+        {
+            base.OnDisposed();
+
+            MenuModel.Instance.Dispose();
+        }
+
     }
 }

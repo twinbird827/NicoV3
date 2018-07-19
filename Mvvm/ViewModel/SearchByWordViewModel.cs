@@ -195,28 +195,6 @@ namespace NicoV3.Mvvm.ViewModel
         public ICommand _OnSearch;
 
         /// <summary>
-        /// 検索処理(ﾃｷｽﾄﾎﾞｯｸｽでENTER時)
-        /// </summary>
-        public ICommand OnSearchByEnter
-        {
-            get
-            {
-                return _OnSearchByEnter = _OnSearchByEnter ?? new RelayCommand<string>(
-              s =>
-              {
-                  // 入力値をﾌﾟﾛﾊﾟﾃｨにｾｯﾄ
-                  this.Word = s;
-
-                  OnSearch.Execute(this.IsTag);
-              },
-              s => {
-                  return !string.IsNullOrWhiteSpace(s);
-              });
-            }
-        }
-        public ICommand _OnSearchByEnter;
-
-        /// <summary>
         /// ﾍﾟｰｼﾞｬ変更処理
         /// </summary>
         public ICommand OnCurrentChanged

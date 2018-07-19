@@ -4,9 +4,233 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:NicoV3.Mvvm.View"
+             xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:s="clr-namespace:System;assembly=mscorlib"
+             xmlns:properties="clr-namespace:NicoV3.Properties"
+             xmlns:converter="clr-namespace:NicoV3.Mvvm.Converter"
+             xmlns:view="clr-namespace:WpfUtilV1.Mvvm.View;assembly=WpfUtilV1"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <s:Boolean x:Key="True">True</s:Boolean>
+        <s:Boolean x:Key="False">False</s:Boolean>
+    </UserControl.Resources>
+
     <Grid>
-        <TextBlock Text="SearchByWordWindow" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <TextBox Grid.Column="0"
+                     Text="{Binding Word, UpdateSourceTrigger=PropertyChanged}" />
+
+            <Button Grid.Column="1"
+                    Width="70"
+                    Command="{Binding OnSearch}"
+                    CommandParameter="{StaticResource True}">
+                <StackPanel>
+                    <TextBlock Text="{x:Static properties:Resources.L_SEARCH_TAG}" />
+                    <Controls:Underline>
+                        <Controls:Underline.Style>
+                            <Style>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsTag}" Value="True">
+                                        <Setter Property="Controls:Underline.Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Controls:Underline.Style>
+                    </Controls:Underline>
+                </StackPanel>
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsTag}" Value="False">
+                                <Setter Property="IsDefault" Value="True" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <Button Grid.Column="2"
+                    Width="70"
+                    Command="{Binding OnSearch}"
+                    CommandParameter="{StaticResource False}">
+                <StackPanel>
+                    <TextBlock Text="{x:Static properties:Resources.L_SEARCH_WORD}" />
+                    <Controls:Underline>
+                        <Controls:Underline.Style>
+                            <Style>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsTag}" Value="False">
+                                        <Setter Property="Controls:Underline.Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Controls:Underline.Style>
+                    </Controls:Underline>
+                </StackPanel>
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsTag}" Value="True">
+                                <Setter Property="IsDefault" Value="True" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <ComboBox Grid.Column="3"
+                      ItemsSource="{Binding SortItems}"
+                      SelectedValue="{Binding SelectedSortItem}"
+                      DisplayMemberPath="Description">
+
+            </ComboBox>
+
+            <ComboBox Grid.Column="4"
+                      ItemsSource="{Binding ThumbSizeItems}"
+                      SelectedValue="{Binding SelectedThumbSizeItem}"
+                      DisplayMemberPath="Description">
+
+            </ComboBox>
+
+        </Grid>
+
+        <Controls:Underline Grid.Row="1" />
+
+        <ListView Grid.Row="2"
+                  ItemsSource="{Binding Items}">
+
+            <ListView.Resources>
+                <converter:Long2TimeSpanConverter x:Key="long2TimeSpan" />
+            </ListView.Resources>
+
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem" BasedOn="{StaticResource {x:Type ListViewItem}}">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    <Setter Property="VerticalContentAlignment" Value="Center" />
+                    <Setter Property="view:ControlMouseDoubleClickBehavior.Command" Value="{Binding OnDoubleClick}" />
+                    <Setter Property="view:ControlKeyDownBehavior.Command" Value="{Binding OnKeyDown}" />
+                    <Setter Property="ContextMenu">
+                        <Setter.Value>
+                            <ContextMenu>
+                                <MenuItem Header="{x:Static properties:Resources.L_TEMPORARY_ADD}"
+                                          Command="{Binding OnTemporaryAdd}" />
+                                <MenuItem Header="{x:Static properties:Resources.L_TEMPORARY_DELETE}" 
+                                          Command="{Binding OnTemporaryDel}" />
+                            </ContextMenu>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
+
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="{x:Static properties:Resources.L_THUMBNAIL}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding Thumbnail}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="{x:Static properties:Resources.L_START_TIME}" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Status}" 
+                                           TextAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="{x:Static properties:Resources.L_TITLE}" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Title}" TextWrapping="Wrap"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="{x:Static properties:Resources.L_VIEW_COUNTER}" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding ViewCounter, StringFormat={}{0:N00}}" 
+                                           TextAlignment="Right"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="{x:Static properties:Resources.L_MYLIST_COUNTER}" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding MylistCounter, StringFormat={}{0:N00}}"
+                                           TextAlignment="Right"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="{x:Static properties:Resources.L_COMMENT_COUNTER}" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding CommentCounter, StringFormat={}{0:N00}}" 
+                                           TextAlignment="Right"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="{x:Static properties:Resources.L_START_TIME}" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding StartTime, StringFormat={x:Static properties:Resources.F_YYMMDDHHMMSS}}" 
+                                           TextAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="{x:Static properties:Resources.L_LENGTH_SECONDS}" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding LengthSeconds, Converter={StaticResource long2TimeSpan}, StringFormat={x:Static properties:Resources.F_HHMMSS}}" 
+                                           TextAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="{x:Static properties:Resources.L_CATEGORY_TAG}" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding CategoryTag}" 
+                                           TextWrapping="Wrap"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+
+        </ListView>
+
+        <view:PagingUserControl Grid.Row="3"
+                DataLength="{Binding DataLength}"
+                PageLength="5"
+                Current="{Binding Current}"
+                Offset="{Binding Offset, Mode=TwoWay}"
+                Limit="25"
+                Command="{Binding OnCurrentChanged}"
+                ListView="{Binding ElementName=listView}">
+        </view:PagingUserControl>
     </Grid>
 </UserControl>

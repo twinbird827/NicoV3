@@ -258,6 +258,12 @@ namespace NicoV3.Mvvm.Model
         public void StartBrowser()
         {
             Process.Start(Variables.BrowserPath, VideoUrl);
+
+            // SEEﾘｽﾄに追加
+            VideoStatusModel.Instance.SeeVideos.Add(VideoId);
+
+            // NEWﾘｽﾄから削除
+            VideoStatusModel.Instance.NewVideos.Remove(VideoId);
         }
     }
 }

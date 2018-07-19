@@ -12,7 +12,7 @@ using WpfUtilV1.Mvvm.ViewModel;
 
 namespace NicoV3.Mvvm.ViewModel
 {
-    public class VideoViewModel : ViewModelBase
+    public class VideoViewModel : ViewModelBase, IListViewItem
     {
         public VideoModel Source { get; private set; }
 
@@ -26,9 +26,34 @@ namespace NicoV3.Mvvm.ViewModel
             : base(model)
         {
             Source = model;
+
+            VideoUrl = Source.VideoUrl;
+            Title = Source.Title;
+            Description = Source.Description;
+            Tags = Source.Tags;
+            CategoryTag = Source.CategoryTag;
+            ViewCounter = Source.ViewCounter;
+            MylistCounter = Source.MylistCounter;
+            CommentCounter = Source.CommentCounter;
+            StartTime = Source.StartTime;
+            LastCommentTime = Source.LastCommentTime;
+            LengthSeconds = Source.LengthSeconds;
+            ThumbnailUrl = Source.ThumbnailUrl;
+            Thumbnail = Source.Thumbnail;
+            CommunityIcon = Source.CommunityIcon;
+            LastUpdateTime = Source.LastUpdateTime;
+            LastResBody = Source.LastResBody;
         }
 
         #region Model Properties
+
+        /// <summary>
+        /// ｽﾃｰﾀｽ
+        /// </summary>
+        public string Status
+        {
+            get { return VideoStatusModel.Instance.GetStatus(VideoId); }
+        }
 
         /// <summary>
         /// ｺﾝﾃﾝﾂId (http://nico.ms/ の後に連結することでコンテンツへのURLになります)
@@ -51,7 +76,7 @@ namespace NicoV3.Mvvm.ViewModel
         /// <summary>
         /// ﾀｲﾄﾙ
         /// </summary>
-        public string Title
+        public virtual string Title
         {
             get { return _Title; }
             set { SetProperty(ref _Title, value); }
@@ -198,6 +223,16 @@ namespace NicoV3.Mvvm.ViewModel
         }
         private string _LastResBody = null;
 
+        /// <summary>
+        /// 選択されているかどうか
+        /// </summary>
+        public bool IsSelected
+        {
+            get { return _IsSelected; }
+            set { SetProperty(ref _IsSelected, value); }
+        }
+        private bool _IsSelected = false;
+
         #endregion
 
         #region Override Methods
@@ -273,8 +308,11 @@ namespace NicoV3.Mvvm.ViewModel
                 return _OnDoubleClick = _OnDoubleClick ?? new RelayCommand(
               _ =>
               {
-                  // ﾛｸﾞｲﾝ実行
+                  // ﾌﾞﾗｳｻﾞ表示
                   Source.StartBrowser();
+
+                  // ｽﾃｰﾀｽを明示的に更新
+                  OnPropertyChanged(nameof(Status));
               },
               _ =>
               {
@@ -304,6 +342,54 @@ namespace NicoV3.Mvvm.ViewModel
             }
         }
         public ICommand _OnKeyDown;
+
+        /// <summary>
+        /// 項目をﾃﾝﾎﾟﾗﾘに追加する
+        /// </summary>
+        public ICommand OnTemporaryAdd
+        {
+            get
+            {
+                return _OnTemporaryAdd = _OnTemporaryAdd ?? new RelayCommand(
+              e =>
+              {
+                  // ﾃﾝﾎﾟﾗﾘに追加
+                  SearchByTemporaryModel.Instance.AddVideo(Source.VideoId);
+
+                  // ｽﾃｰﾀｽを明示的に更新
+                  OnPropertyChanged(nameof(Status));
+              },
+              e =>
+              {
+                  return true;
+              });
+            }
+        }
+        public ICommand _OnTemporaryAdd;
+
+        /// <summary>
+        /// 項目をﾃﾝﾎﾟﾗﾘから削除する
+        /// </summary>
+        public ICommand OnTemporaryDel
+        {
+            get
+            {
+                return _OnTemporaryDel = _OnTemporaryDel ?? new RelayCommand(
+              e =>
+              {
+                  // ﾃﾝﾎﾟﾗﾘから削除
+                  SearchByTemporaryModel.Instance.DeleteVideo(Source.VideoId);
+
+                  // ｽﾃｰﾀｽを明示的に更新
+                  OnPropertyChanged(nameof(Status));
+              },
+              e =>
+              {
+                  return true;
+              });
+            }
+        }
+        public ICommand _OnTemporaryDel;
 
         #endregion
     }

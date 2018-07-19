@@ -1,9 +1,9 @@
 ﻿using NicoV3.Mvvm.Model;
-using NicoV3.Mvvm.View.Dialog;
-using NicoV3.Mvvm.ViewModel.Dialog;
+using NicoV3.Properties;
 using StatefulModel;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,16 +54,6 @@ namespace NicoV3.Mvvm.ViewModel
         private string _Name = null;
 
         /// <summary>
-        /// ｱｲﾃﾑ名(ﾘﾈｰﾑ後)
-        /// </summary>
-        public string Input
-        {
-            get { return _Input; }
-            set { SetProperty(ref _Input, value); }
-        }
-        private string _Input = null;
-
-        /// <summary>
         /// ﾒﾆｭｰの種類
         /// </summary>
         public MenuItemType Type
@@ -105,6 +95,10 @@ namespace NicoV3.Mvvm.ViewModel
         }
         private SynchronizationContextCollection<MenuItemViewModel> _Children;
 
+        /// <summary>
+        /// 自身のﾜｰｸｽﾍﾟｰｽを取得します。
+        /// </summary>
+        /// <returns></returns>
         private WorkSpaceViewModel GetWorkSpace()
         {
             switch (Type)
@@ -147,28 +141,17 @@ namespace NicoV3.Mvvm.ViewModel
             get
             {
                 return _OnRename = _OnRename ?? new RelayCommand(
-                async (p1) =>
-                {
-                    var dc = MainWindowViewModel.Instance.DialogCoordinator;
+                    async _ =>
+                    {
+                        var result = await MainWindowViewModel.Instance.ShowInputAsync(
+                            Resources.L_RENAME,
+                            Resources.M_RENAME_DESCRIPTION);
 
-                    var vm = new SimpleInputDialogViewModel(
-                        new RelayCommand(
-                        p =>
+                        if (!string.IsNullOrWhiteSpace(result))
                         {
-
-                        }));
-                    vm.Title = "Title";
-                    vm.Description = "Description";
-                    vm.Input = "Input";
-
-                    await dc.ShowMetroDialogAsync(MainWindowViewModel.Instance, new SimpleInputDialog(vm))
-                        .ContinueWith(
-                            task => Source.Name = vm.Input,
-                            TaskScheduler.FromCurrentSynchronizationContext()
-                        );
-
-
-                });
+                            Source.Name = result;
+                        }
+                    });
             }
         }
         public ICommand _OnRename;
@@ -181,38 +164,16 @@ namespace NicoV3.Mvvm.ViewModel
             get
             {
                 return _OnAddChildren = _OnAddChildren ?? new RelayCommand(
-                    async (p1) =>
+                    async _ =>
                     {
-                        SimpleInputDialog dialog = null;
-                        var dc = MainWindowViewModel.Instance.DialogCoordinator;
+                        var result = await MainWindowViewModel.Instance.ShowInputAsync(
+                            Resources.L_ADD_CHILDREN,
+                            Resources.M_ADD_CHILDREN_DESCRIPTION);
 
-                        var OkCommand = new RelayCommand(
-                            async p2 =>
-                            {
-                                //
-                                await dc.HideMetroDialogAsync(MainWindowViewModel.Instance, dialog);
-                            });
-                        var CancelCommand = new RelayCommand(
-                            async p2 =>
-                            {
-                                //
-                                await dc.HideMetroDialogAsync(MainWindowViewModel.Instance, dialog);
-                            });
-                        var vm = new SimpleInputDialogViewModel(OkCommand, CancelCommand)
+                        if (!string.IsNullOrWhiteSpace(result) && !Source.Children.Any(c => c.Name == result))
                         {
-                            Title = "Title",
-                            Name = "Name",
-                            Description = "Description",
-                            Input = "Input"
-                        };
-
-                        dialog = new SimpleInputDialog(vm);
-
-                        await dc.ShowMetroDialogAsync(MainWindowViewModel.Instance, dialog)
-                            .ContinueWith(
-                                task => Source.Name = vm.Input,
-                                TaskScheduler.FromCurrentSynchronizationContext()
-                            );
+                            Source.Children.Add(new MenuItemModel(result, MenuItemType.MylistOfOther));
+                        }
                     });
             }
         }
@@ -226,13 +187,19 @@ namespace NicoV3.Mvvm.ViewModel
             get
             {
                 return _OnRemove = _OnRemove ?? new RelayCommand(
-              _ =>
-              {
+                    async _ =>
+                    {
+                        var result = await MainWindowViewModel.Instance.ShowMessageAsync(
+                            Resources.L_REMOVE,
+                            Resources.M_REMOVE_DESCRIPTION,
+                            MahApps.Metro.Controls.Dialogs.MessageDialogStyle.AffirmativeAndNegative);
 
-              },
-              _ => {
-                  return true;
-              });
+                        if (result == MahApps.Metro.Controls.Dialogs.MessageDialogResult.Affirmative)
+                        {
+                            // 親ﾒﾆｭｰから自身を削除
+                            Parent.Source.Children.Remove(Source);
+                        }
+                    });
             }
         }
         public ICommand _OnRemove;
@@ -258,5 +225,17 @@ namespace NicoV3.Mvvm.ViewModel
         public ICommand _OnMouseDoubleClick;
 
         #endregion
+
+        protected override void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            base.OnPropertyChanged(sender, e);
+
+            switch (e.PropertyName)
+            {
+                case nameof(Name) :
+                    Name = Source.Name;
+                    break;
+            }
+        }
     }
 }

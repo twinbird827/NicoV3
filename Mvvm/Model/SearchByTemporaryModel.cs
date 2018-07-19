@@ -41,6 +41,7 @@ namespace NicoV3.Mvvm.Model
             if (!LoginModel.Instance.IsLogin)
             {
                 ServiceFactory.MessageService.Error("Login error");
+                return;
             }
 
             Videos.Clear();
@@ -76,6 +77,38 @@ namespace NicoV3.Mvvm.Model
 
                 // 自身に追加
                 Videos.Add(video.VideoId);
+            }
+        }
+
+        public void AddVideo(string id, string description = "")
+        {
+            if (!Videos.Any(v => v == id))
+            {
+                // とりあえずﾏｲﾘｽﾄに追加
+                string url = string.Format(Constants.DeflistAdd, id, description, LoginModel.Instance.Token);
+                string txt = GetSmileVideoHtmlText(url);
+
+                // 自身に追加
+                Videos.Insert(0, id);
+
+                // NEWﾘｽﾄに追加
+                VideoStatusModel.Instance.NewVideos.Add(id);
+            }
+        }
+
+        public void DeleteVideo(string id)
+        {
+            if (Videos.Any(v => v == id))
+            {
+                // とりあえずﾏｲﾘｽﾄから削除
+                string url = string.Format(Constants.DeflistDel, id, LoginModel.Instance.Token);
+                string txt = GetSmileVideoHtmlText(url);
+
+                // 自身から削除
+                Videos.Remove(id);
+
+                // ｽﾃｰﾀｽを削除
+                VideoStatusModel.Instance.DeleteStatus(id);
             }
         }
     }

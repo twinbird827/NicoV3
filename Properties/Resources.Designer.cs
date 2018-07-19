@@ -61,6 +61,42 @@ namespace NicoV3.Properties {
         }
         
         /// <summary>
+        ///   HH:mm:ss に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string F_HHMMSS {
+            get {
+                return ResourceManager.GetString("F_HHMMSS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   yy/MM/dd HH:mm:ss に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string F_YYMMDDHHMMSS {
+            get {
+                return ResourceManager.GetString("F_YYMMDDHHMMSS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   yyyy/MM/dd HH:mm:ss に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string F_YYYYMMDDHHMMSS {
+            get {
+                return ResourceManager.GetString("F_YYYYMMDDHHMMSS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   追加 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string L_ADD {
+            get {
+                return ResourceManager.GetString("L_ADD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Add Children に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string L_ADD_CHILDREN {
@@ -79,6 +115,69 @@ namespace NicoV3.Properties {
         }
         
         /// <summary>
+        ///   カテゴリタグ に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string L_CATEGORY_TAG {
+            get {
+                return ResourceManager.GetString("L_CATEGORY_TAG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   コメント に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string L_COMMENT_COUNTER {
+            get {
+                return ResourceManager.GetString("L_COMMENT_COUNTER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   著作権 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string L_COPYRIGHT {
+            get {
+                return ResourceManager.GetString("L_COPYRIGHT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   削除 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string L_DELETE {
+            get {
+                return ResourceManager.GetString("L_DELETE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   再生時間 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string L_LENGTH_SECONDS {
+            get {
+                return ResourceManager.GetString("L_LENGTH_SECONDS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   ログイン に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string L_LOGIN {
+            get {
+                return ResourceManager.GetString("L_LOGIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   メールアドレス に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string L_MAIL_ADDRESS {
+            get {
+                return ResourceManager.GetString("L_MAIL_ADDRESS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Menu に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string L_MENU {
@@ -88,11 +187,38 @@ namespace NicoV3.Properties {
         }
         
         /// <summary>
+        ///   マイリスト に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string L_MYLIST_COUNTER {
+            get {
+                return ResourceManager.GetString("L_MYLIST_COUNTER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   名前 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string L_NAME {
+            get {
+                return ResourceManager.GetString("L_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   OK に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string L_OK {
             get {
                 return ResourceManager.GetString("L_OK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   パスワード に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string L_PASSWORD {
+            get {
+                return ResourceManager.GetString("L_PASSWORD", resourceCulture);
             }
         }
         
@@ -111,6 +237,187 @@ namespace NicoV3.Properties {
         public static string L_RENAME {
             get {
                 return ResourceManager.GetString("L_RENAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   検索 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string L_SEARCH {
+            get {
+                return ResourceManager.GetString("L_SEARCH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   タグ検索 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string L_SEARCH_TAG {
+            get {
+                return ResourceManager.GetString("L_SEARCH_TAG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   ワード検索 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string L_SEARCH_WORD {
+            get {
+                return ResourceManager.GetString("L_SEARCH_WORD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   登録日時 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string L_START_TIME {
+            get {
+                return ResourceManager.GetString("L_START_TIME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   ステータス に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string L_STATUS {
+            get {
+                return ResourceManager.GetString("L_STATUS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   とりあえずマイリストに追加 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string L_TEMPORARY_ADD {
+            get {
+                return ResourceManager.GetString("L_TEMPORARY_ADD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   とりあえずマイリストから削除 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string L_TEMPORARY_DELETE {
+            get {
+                return ResourceManager.GetString("L_TEMPORARY_DELETE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   サムネイル に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string L_THUMBNAIL {
+            get {
+                return ResourceManager.GetString("L_THUMBNAIL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   タイトル に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string L_TITLE {
+            get {
+                return ResourceManager.GetString("L_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   ログイン設定 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string L_TITLE_LOGIN {
+            get {
+                return ResourceManager.GetString("L_TITLE_LOGIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   バージョン情報 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string L_TITLE_VERSION {
+            get {
+                return ResourceManager.GetString("L_TITLE_VERSION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   更新日時 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string L_UPDATEDATE {
+            get {
+                return ResourceManager.GetString("L_UPDATEDATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   ユーザID に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string L_USER_ID {
+            get {
+                return ResourceManager.GetString("L_USER_ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   ユーザ名 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string L_USER_NAME {
+            get {
+                return ResourceManager.GetString("L_USER_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   バージョン に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string L_VERSION {
+            get {
+                return ResourceManager.GetString("L_VERSION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   再生数 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string L_VIEW_COUNTER {
+            get {
+                return ResourceManager.GetString("L_VIEW_COUNTER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   追加するフォルダ名を入力してください。 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string M_ADD_CHILDREN_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("M_ADD_CHILDREN_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   追加したい動画のURLか &quot;sm&quot; から始まる動画IDを入力してください。 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string M_ADD_TEMPORARY {
+            get {
+                return ResourceManager.GetString("M_ADD_TEMPORARY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   選択したフォルダを削除します。
+        ///よろしいですか？ に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string M_REMOVE_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("M_REMOVE_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   変更後の名前を入力してください。 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string M_RENAME_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("M_RENAME_DESCRIPTION", resourceCulture);
             }
         }
         

@@ -34,6 +34,16 @@ namespace NicoV3.Mvvm.ViewModel
             this.UserThumbnail = Source.UserThumbnail;
             this.MylistDate = Source.MylistDate;
 
+            Items = Source.Videos.ToSyncedSynchronizationContextCollection(
+                id => new SearchByMylistItemViewModel(id),
+                AnonymousSynchronizationContext.Current
+            );
+
+            SortItems = ComboSortMylistModel
+                .Instance
+                .Items
+                .ToSyncedSynchronizationContextCollection(m => m, AnonymousSynchronizationContext.Current);
+            SelectedSortItem = SortItems.First();
 
         }
 
@@ -203,27 +213,31 @@ namespace NicoV3.Mvvm.ViewModel
         public ICommand _OnSearch;
 
         /// <summary>
-        /// 検索処理(ﾃｷｽﾄﾎﾞｯｸｽでENTER時)
+        /// 追加処理
         /// </summary>
-        public ICommand OnSearchByEnter
+        public ICommand OnAdd
         {
             get
             {
-                return _OnSearchByEnter = _OnSearchByEnter ?? new RelayCommand<string>(
-              s =>
+                return _OnAdd = _OnAdd ?? new RelayCommand(
+              _ =>
               {
-                  // 入力値をﾌﾟﾛﾊﾟﾃｨにｾｯﾄ
-                  this.Word = s;
+                  // 入力値をﾓﾃﾞﾙにｾｯﾄ
+                  Source.Word = this.Word;
+                  Source.OrderBy = this.SelectedSortItem.Value;
 
-                  // 検索処理実行
-                  OnSearch.Execute(null);
+                  // 検索実行
+                  this.Source.Reload();
+
+                  // ｵｰﾅｰ情報を表示するかどうか
+                  this.IsCreatorVisible = Source.Videos.Any();
               },
-              s => {
-                  return !string.IsNullOrWhiteSpace(s);
+              _ => {
+                  return !string.IsNullOrWhiteSpace(Word);
               });
             }
         }
-        public ICommand _OnSearchByEnter;
+        public ICommand _OnAdd;
 
     }
 }

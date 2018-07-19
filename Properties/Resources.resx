@@ -117,23 +117,126 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="F_HHMMSS" xml:space="preserve">
+    <value>HH:mm:ss</value>
+  </data>
+  <data name="F_YYMMDDHHMMSS" xml:space="preserve">
+    <value>yy/MM/dd HH:mm:ss</value>
+  </data>
+  <data name="F_YYYYMMDDHHMMSS" xml:space="preserve">
+    <value>yyyy/MM/dd HH:mm:ss</value>
+  </data>
+  <data name="L_ADD" xml:space="preserve">
+    <value>追加</value>
+  </data>
   <data name="L_ADD_CHILDREN" xml:space="preserve">
     <value>Add Children</value>
   </data>
   <data name="L_CANCEL" xml:space="preserve">
     <value>キャンセル</value>
   </data>
+  <data name="L_CATEGORY_TAG" xml:space="preserve">
+    <value>カテゴリタグ</value>
+  </data>
+  <data name="L_COMMENT_COUNTER" xml:space="preserve">
+    <value>コメント</value>
+  </data>
+  <data name="L_COPYRIGHT" xml:space="preserve">
+    <value>著作権</value>
+  </data>
+  <data name="L_DELETE" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="L_LENGTH_SECONDS" xml:space="preserve">
+    <value>再生時間</value>
+  </data>
+  <data name="L_LOGIN" xml:space="preserve">
+    <value>ログイン</value>
+  </data>
+  <data name="L_MAIL_ADDRESS" xml:space="preserve">
+    <value>メールアドレス</value>
+  </data>
   <data name="L_MENU" xml:space="preserve">
     <value>Menu</value>
   </data>
+  <data name="L_MYLIST_COUNTER" xml:space="preserve">
+    <value>マイリスト</value>
+  </data>
+  <data name="L_NAME" xml:space="preserve">
+    <value>名前</value>
+  </data>
   <data name="L_OK" xml:space="preserve">
     <value>OK</value>
+  </data>
+  <data name="L_PASSWORD" xml:space="preserve">
+    <value>パスワード</value>
   </data>
   <data name="L_REMOVE" xml:space="preserve">
     <value>Remove</value>
   </data>
   <data name="L_RENAME" xml:space="preserve">
     <value>Rename</value>
+  </data>
+  <data name="L_SEARCH" xml:space="preserve">
+    <value>検索</value>
+  </data>
+  <data name="L_SEARCH_TAG" xml:space="preserve">
+    <value>タグ検索</value>
+  </data>
+  <data name="L_SEARCH_WORD" xml:space="preserve">
+    <value>ワード検索</value>
+  </data>
+  <data name="L_START_TIME" xml:space="preserve">
+    <value>登録日時</value>
+  </data>
+  <data name="L_STATUS" xml:space="preserve">
+    <value>ステータス</value>
+  </data>
+  <data name="L_TEMPORARY_ADD" xml:space="preserve">
+    <value>とりあえずマイリストに追加</value>
+  </data>
+  <data name="L_TEMPORARY_DELETE" xml:space="preserve">
+    <value>とりあえずマイリストから削除</value>
+  </data>
+  <data name="L_THUMBNAIL" xml:space="preserve">
+    <value>サムネイル</value>
+  </data>
+  <data name="L_TITLE" xml:space="preserve">
+    <value>タイトル</value>
+  </data>
+  <data name="L_TITLE_LOGIN" xml:space="preserve">
+    <value>ログイン設定</value>
+  </data>
+  <data name="L_TITLE_VERSION" xml:space="preserve">
+    <value>バージョン情報</value>
+  </data>
+  <data name="L_UPDATEDATE" xml:space="preserve">
+    <value>更新日時</value>
+  </data>
+  <data name="L_USER_ID" xml:space="preserve">
+    <value>ユーザID</value>
+  </data>
+  <data name="L_USER_NAME" xml:space="preserve">
+    <value>ユーザ名</value>
+  </data>
+  <data name="L_VERSION" xml:space="preserve">
+    <value>バージョン</value>
+  </data>
+  <data name="L_VIEW_COUNTER" xml:space="preserve">
+    <value>再生数</value>
+  </data>
+  <data name="M_ADD_CHILDREN_DESCRIPTION" xml:space="preserve">
+    <value>追加するフォルダ名を入力してください。</value>
+  </data>
+  <data name="M_ADD_TEMPORARY" xml:space="preserve">
+    <value>追加したい動画のURLか "sm" から始まる動画IDを入力してください。</value>
+  </data>
+  <data name="M_REMOVE_DESCRIPTION" xml:space="preserve">
+    <value>選択したフォルダを削除します。
+よろしいですか？</value>
+  </data>
+  <data name="M_RENAME_DESCRIPTION" xml:space="preserve">
+    <value>変更後の名前を入力してください。</value>
   </data>
   <data name="RANK_CATEGORY_ALL" xml:space="preserve">
     <value>all</value>

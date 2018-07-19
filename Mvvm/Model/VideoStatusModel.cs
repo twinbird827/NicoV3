@@ -28,6 +28,26 @@ namespace NicoV3.Mvvm.Model
         private ObservableSynchronizedCollection<VideoModel> _Videos = new ObservableSynchronizedCollection<VideoModel>();
 
         /// <summary>
+        /// NEWﾘｽﾄ
+        /// </summary>
+        public ObservableSynchronizedCollection<string> NewVideos
+        {
+            get { return _NewVideos; }
+            set { SetProperty(ref _NewVideos, value); }
+        }
+        private ObservableSynchronizedCollection<string> _NewVideos = new ObservableSynchronizedCollection<string>();
+
+        /// <summary>
+        /// SEEﾘｽﾄ
+        /// </summary>
+        public ObservableSynchronizedCollection<string> SeeVideos
+        {
+            get { return _SeeVideos; }
+            set { SetProperty(ref _SeeVideos, value); }
+        }
+        private ObservableSynchronizedCollection<string> _SeeVideos = new ObservableSynchronizedCollection<string>();
+
+        /// <summary>
         /// ﾋﾞﾃﾞｵ情報をﾏｰｼﾞします。
         /// </summary>
         /// <param name="video">ﾏｰｼﾞするﾋﾞﾃﾞｵ情報</param>
@@ -76,6 +96,35 @@ namespace NicoV3.Mvvm.Model
 
                 return tmp;
             }
+        }
+
+        public string GetStatus(string id)
+        {
+            if (SeeVideos.Any(v => v == id))
+            {
+                return "SEE";
+            }
+            else if (NewVideos.Any(v => v == id))
+            {
+                return "NEW";
+            }
+            else if (SearchByTemporaryModel.Instance.Videos.Any(v => v == id))
+            {
+                return "FAV";
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public void DeleteStatus(string id)
+        {
+            // NEWﾘｽﾄから削除
+            NewVideos.Remove(id);
+
+            // SEEﾘｽﾄから削除
+            SeeVideos.Remove(id);
         }
     }
 }
