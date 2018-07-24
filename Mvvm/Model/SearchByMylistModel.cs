@@ -1,4 +1,4 @@
-﻿using NicoV3.Mvvm.Service;
+﻿using WpfUtilV1.Mvvm.Service;
 using StatefulModel;
 using System;
 using System.Collections.Generic;

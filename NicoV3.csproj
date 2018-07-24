@@ -75,6 +75,10 @@
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\NicoDataConverter.cs" />
     <Compile Include="Common\Variables.cs" />
+    <Page Include="Mvvm\Dialog\MylistSelectDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Mvvm\View\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -106,6 +110,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Mvvm\Converter\Long2TimeSpanConverter.cs" />
+    <Compile Include="Mvvm\Dialog\MylistSelectDialog.xaml.cs">
+      <DependentUpon>MylistSelectDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Mvvm\Dialog\MylistSelectDialogViewModel.cs" />
     <Compile Include="Mvvm\Model\ComboboxItem\ComboboxItemModel.cs" />
     <Compile Include="Mvvm\Model\ComboboxItem\ComboRankCategoryModel.cs" />
     <Compile Include="Mvvm\Model\ComboboxItem\ComboRankPeriodModel.cs" />
@@ -127,9 +135,6 @@
     <Compile Include="Mvvm\Model\SearchByWordModel.cs" />
     <Compile Include="Mvvm\Model\VideoModel.cs" />
     <Compile Include="Mvvm\Model\VideoStatusModel.cs" />
-    <Compile Include="Mvvm\Service\ConsoleMessageService.cs" />
-    <Compile Include="Mvvm\Service\IMessageService.cs" />
-    <Compile Include="Mvvm\Service\ServiceFactory.cs" />
     <Compile Include="Mvvm\ViewModel\MainWindowViewModel.cs" />
     <Compile Include="Mvvm\ViewModel\MenuItemViewModel.cs" />
     <Compile Include="Mvvm\ViewModel\MylistViewModel.cs" />

@@ -1,6 +1,6 @@
 ﻿using Codeplex.Data;
 using NicoV3.Common;
-using NicoV3.Mvvm.Service;
+using WpfUtilV1.Mvvm.Service;
 using StatefulModel;
 using System;
 using System.Collections.Generic;

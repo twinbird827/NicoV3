@@ -10,10 +10,24 @@ using WpfUtilV1.Common;
 
 namespace NicoV3.Common
 {
-    public class NicoDataConverter
+    public static class NicoDataConverter
     {
-        private static Stopwatch LastGetThumnail { get; set; } = new Stopwatch();
+        private static Stopwatch LastGetThumnail { get; set; }
 
+        /// <summary>
+        /// 静的ｺﾝｽﾄﾗｸﾀ
+        /// </summary>
+        static NicoDataConverter()
+        {
+            LastGetThumnail = new Stopwatch();
+            LastGetThumnail.Start();
+        }
+
+        /// <summary>
+        /// 文字をDateTimeに変換します。
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static DateTime ToDatetime(string value)
         {
             if (string.IsNullOrEmpty(value))
@@ -26,6 +40,11 @@ namespace NicoV3.Common
             }
         }
 
+        /// <summary>
+        /// HH:mm:ss形式の文字を合算した秒に変換します。
+        /// </summary>
+        /// <param name="value">HH:mm:ss形式の文字</param>
+        /// <returns>合算した秒</returns>
         public static long ToLengthSeconds(string value)
         {
             var lengthSecondsIndex = 0;
@@ -38,11 +57,21 @@ namespace NicoV3.Common
             return lengthSeconds;
         }
 
+        /// <summary>
+        /// 指定した文字をlong値に変換します。
+        /// </summary>
+        /// <param name="value">文字</param>
+        /// <returns>long値</returns>
         public static long ToLong(string value)
         {
             return long.Parse(value.Replace(",", ""));
         }
 
+        /// <summary>
+        /// Unix時間(long)からDateTimeに変換します。
+        /// </summary>
+        /// <param name="time">Unix時間(long)</param>
+        /// <returns><code>DateTime</code></returns>
         public static DateTime FromUnixTime(long time)
         {
             return DateTimeOffset.FromUnixTimeSeconds(time).LocalDateTime;
@@ -93,5 +122,14 @@ namespace NicoV3.Common
             }
         }
 
+        /// <summary>
+        /// 指定したﾜｰﾄﾞをIDに変換します。
+        /// </summary>
+        /// <param name="word">ﾜｰﾄﾞ</param>
+        /// <returns>ID</returns>
+        public static string ToId(string word)
+        {
+            return word?.Split('/').Last();
+        }
     }
 }

@@ -1,4 +1,6 @@
-﻿using NicoV3.Mvvm.Model;
+﻿using NicoV3.Common;
+using NicoV3.Mvvm.Dialog;
+using NicoV3.Mvvm.Model;
 using NicoV3.Mvvm.Model.ComboboxItem;
 using StatefulModel;
 using System;
@@ -220,21 +222,21 @@ namespace NicoV3.Mvvm.ViewModel
             get
             {
                 return _OnAdd = _OnAdd ?? new RelayCommand(
-              _ =>
-              {
-                  // 入力値をﾓﾃﾞﾙにｾｯﾄ
-                  Source.Word = this.Word;
-                  Source.OrderBy = this.SelectedSortItem.Value;
+                async _ =>
+                {
+                    var vm = new MylistSelectDialogViewModel(
+                        dvm =>
+                        {
+                            dvm.MenuItems
+                                .First(mi => mi.IsSelected)
+                                .Source.Mylists.Add(NicoDataConverter.ToId(Source.Word));
+                        });
 
-                  // 検索実行
-                  this.Source.Reload();
-
-                  // ｵｰﾅｰ情報を表示するかどうか
-                  this.IsCreatorVisible = Source.Videos.Any();
-              },
-              _ => {
-                  return !string.IsNullOrWhiteSpace(Word);
-              });
+                    await MainWindowViewModel.Instance.ShowMetroDialogAsync(vm.Dialog);
+                },
+                _ => {
+                    return IsCreatorVisible;
+                });
             }
         }
         public ICommand _OnAdd;

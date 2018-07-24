@@ -9,14 +9,14 @@ namespace NicoV3.Mvvm.ViewModel
 {
     public class SearchByFavMylistItemViewModel : MylistViewModel
     {
-        public SearchByFavMylistItemViewModel(string id)
-            : base(id)
+        public SearchByFavMylistItemViewModel(MenuItemModel parent, string id)
+            : base(parent, id)
         {
 
         }
 
-        public SearchByFavMylistItemViewModel(MylistModel model)
-            : base(model)
+        public SearchByFavMylistItemViewModel(MenuItemModel parent, MylistModel model)
+            : base(parent, model)
         {
 
         }

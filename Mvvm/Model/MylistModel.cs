@@ -37,7 +37,7 @@ namespace NicoV3.Mvvm.Model
         [DataMember]
         public string MylistUrl
         {
-            get { return string.Format(Constants.MylistUrlRss, _MylistUrl?.Split('/').Last(), OrderBy); }
+            get { return string.Format(Constants.MylistUrlRss, NicoDataConverter.ToId(_MylistUrl), OrderBy); }
             set { SetProperty(ref _MylistUrl, value); }
         }
         private string _MylistUrl = null;
@@ -58,7 +58,7 @@ namespace NicoV3.Mvvm.Model
         /// </summary>
         public string MylistId
         {
-            get { return MylistUrl?.Split('/').Last(); }
+            get { return NicoDataConverter.ToId(MylistUrl); }
         }
 
         /// <summary>
@@ -222,7 +222,7 @@ namespace NicoV3.Mvvm.Model
         private string GetUserId()
         {
             var url = string.Format(Constants.MylistUrl, MylistId); // 生のURL 
-            var txt = GetSmileVideoHtmlText(url);               // HTMLﾃｷｽﾄを取得 & user id を取得
+            var txt = GetSmileVideoHtmlText(url);                   // HTMLﾃｷｽﾄを取得 & user id を取得
             var id = Regex.Match(txt, "user_id: (?<user_id>[\\d]+)").Groups["user_id"].Value;
             return id;
         }

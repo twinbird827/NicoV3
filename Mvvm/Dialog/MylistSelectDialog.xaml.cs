@@ -1,5 +1,4 @@
 ﻿using MahApps.Metro.Controls.Dialogs;
-using NicoV3.Mvvm.ViewModel.Dialog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,19 +11,25 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace NicoV3.Mvvm.View.Dialog
+namespace NicoV3.Mvvm.Dialog
 {
     /// <summary>
-    /// SimpleInputDialog.xaml の相互作用ロジック
+    /// MylistSelectDialog.xaml の相互作用ロジック
     /// </summary>
-    public partial class SimpleInputDialog : BaseMetroDialog
+    public partial class MylistSelectDialog : BaseMetroDialog
     {
-        public SimpleInputDialog(SimpleInputDialogViewModel vm)
+        public MylistSelectDialog()
+            : this(new MylistSelectDialogViewModel())
+        {
+
+        }
+
+        public MylistSelectDialog(MylistSelectDialogViewModel vm)
         {
             InitializeComponent();
+
             DataContext = vm;
         }
     }

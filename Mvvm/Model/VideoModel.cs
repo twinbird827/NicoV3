@@ -39,11 +39,7 @@ namespace NicoV3.Mvvm.Model
             }
             set
             {
-                if (value.Contains("/"))
-                {
-                    value = value.Split('/').Last();
-                }
-                SetProperty(ref _VideoUrl, value);
+                SetProperty(ref _VideoUrl, NicoDataConverter.ToId(value));
             }
         }
         private string _VideoUrl = null;
@@ -53,7 +49,7 @@ namespace NicoV3.Mvvm.Model
         /// </summary>
         public string VideoId
         {
-            get { return VideoUrl.Split('/').Last(); }
+            get { return NicoDataConverter.ToId(VideoUrl); }
         }
 
         /// <summary>
@@ -250,6 +246,12 @@ namespace NicoV3.Mvvm.Model
             ThumbnailUrl = xml.Element("thumbnail_url").Value;
             LengthSeconds = NicoDataConverter.ToLengthSeconds(xml.Element("length").Value);
             LastResBody = xml.Element("last_res_body").Value;
+            Tags = string.Join(" ", xml
+                .Elements("tags")
+                .First(x => (string)x.Attribute("domain") == "jp")
+                .Elements("tag")
+                .Select(x => (string)x)
+            );
         }
 
         /// <summary>

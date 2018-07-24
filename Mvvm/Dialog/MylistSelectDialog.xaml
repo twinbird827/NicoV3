@@ -1,0 +1,94 @@
+﻿<Controls:BaseMetroDialog x:Class="NicoV3.Mvvm.Dialog.MylistSelectDialog"
+                          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                          xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                          xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                          xmlns:local="clr-namespace:NicoV3.Mvvm.Dialog"
+                          xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+                          xmlns:properties="clr-namespace:NicoV3.Properties"
+                          xmlns:view="clr-namespace:WpfUtilV1.Mvvm.View;assembly=WpfUtilV1"
+                          xmlns:vm="clr-namespace:NicoV3.Mvvm.ViewModel"
+                          Title="{x:Static properties:Resources.L_SELECT_DIRECTORY}"
+                          mc:Ignorable="d">
+
+    <Controls:BaseMetroDialog.Resources>
+        
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- TreeViewItemを幅いっぱいまで伸ばすためのResourceDictionary -->
+                <ResourceDictionary Source="pack://application:,,,/WpfUtilV1;component/Mvvm/View/TreeViewItemResourceDictionary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+    </Controls:BaseMetroDialog.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0"
+                   Text="{x:Static properties:Resources.M_MYLIST_SELECT_DIALOG_DESCRIPTION}"/>
+        
+        <view:TreeViewEx Grid.Row="1"
+                         MinWidth="200"
+                         MinHeight="50"
+                         HorizontalAlignment="Stretch" 
+                         HorizontalContentAlignment="Stretch" 
+                         ItemsSource="{Binding MenuItems}" 
+                         Margin="1" 
+                         Padding="1">
+            <TreeView.ItemContainerStyle>
+                <Style TargetType="TreeViewItem" BasedOn="{StaticResource {x:Type TreeViewItem}}">
+                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                    <Setter Property="VerticalAlignment" Value="Stretch"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+                    <Setter Property="IsExpanded" Value="True" />
+                    <Setter Property="ContextMenu">
+                        <Setter.Value>
+                            <ContextMenu>
+                                <MenuItem Header="{x:Static properties:Resources.L_RENAME}" Command="{Binding OnRename}" />
+                                <MenuItem Header="{x:Static properties:Resources.L_ADD_CHILDREN}" Command="{Binding OnAddChildren}" />
+                                <MenuItem Header="{x:Static properties:Resources.L_REMOVE}" Command="{Binding OnRemove}" />
+                            </ContextMenu>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TreeView.ItemContainerStyle>
+            <TreeView.Resources>
+                <HierarchicalDataTemplate DataType="{x:Type vm:MenuItemViewModel}" ItemsSource="{Binding Children}">
+                    <ContentControl>
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Content="{Binding Name}" VerticalAlignment="Center" />
+                        </Grid>
+                    </ContentControl>
+                </HierarchicalDataTemplate>
+            </TreeView.Resources>
+        </view:TreeViewEx>
+
+        <Grid Grid.Row="2"
+              HorizontalAlignment="Right">
+            <StackPanel Orientation="Horizontal">
+
+                <Button Grid.Column="0"
+                        Width="70"
+                        IsDefault="True"
+                        Content="{x:Static properties:Resources.L_OK}"
+                        Command="{Binding OnAccept}" />
+
+                <Button Grid.Column="1"
+                        Width="70"
+                        IsCancel="True"
+                        Content="{x:Static properties:Resources.L_CANCEL}"
+                        Command="{Binding OnCancel}" />
+
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Controls:BaseMetroDialog>

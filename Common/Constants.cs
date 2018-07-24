@@ -149,6 +149,11 @@ namespace NicoV3.Common
         /// </summary>
         public const string MylistOfMe = "http://www.nicovideo.jp//api/mylistgroup/list";
 
+        /// <summary>
+        /// FlvﾌｧｲﾙUrl
+        /// </summary>
+        public const string MovieInfoUrl = "http://www.nicovideo.jp/api/getflv?v={0}";
+
         /**************************************************
          * 検索処理関連の定数
          **************************************************/

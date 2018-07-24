@@ -5,8 +5,126 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:NicoV3.Mvvm.View"
              mc:Ignorable="d" 
+             xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:s="clr-namespace:System;assembly=mscorlib"
+             xmlns:properties="clr-namespace:NicoV3.Properties"
+             xmlns:converter="clr-namespace:NicoV3.Mvvm.Converter"
+             xmlns:view="clr-namespace:WpfUtilV1.Mvvm.View;assembly=WpfUtilV1"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <TextBlock Text="SearchByFavMylistWindow" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <Button Grid.Column="0"
+                    Command="{Binding OnAdd}"
+                    Content="{x:Static properties:Resources.L_ADD}"
+                    Width="70"/>
+            
+            <Button Grid.Column="1"
+                    Command="{Binding OnDelete}"
+                    Content="{x:Static properties:Resources.L_DELETE}"
+                    Width="70"/>
+
+        </Grid>
+
+        <Controls:Underline Grid.Row="1" />
+
+        <ListView Grid.Row="2"
+                  ItemsSource="{Binding Items}">
+
+            <ListView.Resources>
+                <converter:Long2TimeSpanConverter x:Key="long2TimeSpan" />
+            </ListView.Resources>
+
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem" BasedOn="{StaticResource {x:Type ListViewItem}}">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    <Setter Property="VerticalContentAlignment" Value="Center" />
+                    <Setter Property="view:ControlMouseDoubleClickBehavior.Command" Value="{Binding OnDoubleClick}" />
+                    <Setter Property="view:ControlKeyDownBehavior.Command" Value="{Binding OnKeyDown}" />
+                    <Setter Property="ContextMenu">
+                        <Setter.Value>
+                            <ContextMenu>
+                                <MenuItem Header="{x:Static properties:Resources.L_COPY_URL}"
+                                          Command="{Binding OnCopyUrl}" />
+                                <MenuItem Header="{x:Static properties:Resources.L_DELETE}" 
+                                          Command="{Binding OnDelete}" />
+                            </ContextMenu>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
+
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="{x:Static properties:Resources.L_THUMBNAIL}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding UserThumbnail}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="{x:Static properties:Resources.L_TITLE}" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding MylistTitle}" 
+                                           TextWrapping="Wrap"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="{x:Static properties:Resources.L_USER_ID}" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding UserId}"
+                                           TextAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="{x:Static properties:Resources.L_USER_NAME}" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding MylistCreator}"
+                                           TextAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="{x:Static properties:Resources.L_DESCRIPTION}" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding MylistDescription}" 
+                                           TextWrapping="Wrap"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="{x:Static properties:Resources.L_UPDATEDATE}" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding MylistDate, StringFormat={x:Static properties:Resources.F_YYMMDDHHMMSS}}" 
+                                           TextAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+
+        </ListView>
+
     </Grid>
 </UserControl>

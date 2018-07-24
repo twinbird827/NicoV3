@@ -1,28 +1,34 @@
-﻿using NicoV3.Mvvm.Model;
+﻿using NicoV3.Common;
+using NicoV3.Mvvm.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using WpfUtilV1.Mvvm;
 using WpfUtilV1.Mvvm.ViewModel;
 
 namespace NicoV3.Mvvm.ViewModel
 {
-    public class MylistViewModel : ViewModelBase
+    public class MylistViewModel : ViewModelBase, IListViewItem
     {
+        public MenuItemModel Parent { get; private set; }
+
         public MylistModel Source { get; private set; }
 
-        public MylistViewModel(string id)
-            : this(MylistStatusModel.Instance.GetMylist(id))
+        public MylistViewModel(MenuItemModel parent, string id)
+            : this(parent, MylistStatusModel.Instance.GetMylist(id))
         {
 
         }
 
-        public MylistViewModel(MylistModel model)
+        public MylistViewModel(MenuItemModel parent, MylistModel model)
             : base(model)
         {
+            Parent = parent;
             Source = model;
         }
 
@@ -53,7 +59,7 @@ namespace NicoV3.Mvvm.ViewModel
         /// </summary>
         public string MylistId
         {
-            get { return MylistUrl?.Split('/').Last(); }
+            get { return NicoDataConverter.ToId(MylistUrl); }
         }
 
         /// <summary>
@@ -126,6 +132,16 @@ namespace NicoV3.Mvvm.ViewModel
         }
         private DateTime _MylistDate = default(DateTime);
 
+        /// <summary>
+        /// 選択されているかどうか
+        /// </summary>
+        public bool IsSelected
+        {
+            get { return _IsSelected; }
+            set { SetProperty(ref _IsSelected, value); }
+        }
+        private bool _IsSelected = false;
+
         #endregion
 
         #region Override Methods
@@ -165,6 +181,96 @@ namespace NicoV3.Mvvm.ViewModel
                     break;
             }
         }
+
+        #endregion
+
+        #region Commands
+
+        /// <summary>
+        /// 項目ﾀﾞﾌﾞﾙｸﾘｯｸ時ｲﾍﾞﾝﾄ
+        /// </summary>
+        public ICommand OnDoubleClick
+        {
+            get
+            {
+                return _OnDoubleClick = _OnDoubleClick ?? new RelayCommand(
+                    _ =>
+                    {
+                        // ﾏｲﾘｽﾄ検索画面へ遷移
+                        MainWindowViewModel.Instance.Current = 
+                            new SearchByMylistViewModel(new SearchByMylistModel(Source.MylistUrl, OrderBy));
+                    },
+                    _ =>
+                    {
+                        return true;
+                    });
+            }
+        }
+        public ICommand _OnDoubleClick;
+
+        /// <summary>
+        /// 項目ｷｰ入力時ｲﾍﾞﾝﾄ
+        /// </summary>
+        public ICommand OnKeyDown
+        {
+            get
+            {
+                return _OnKeyDown = _OnKeyDown ?? new RelayCommand<KeyEventArgs>(
+                    e =>
+                    {
+                        // ﾀﾞﾌﾞﾙｸﾘｯｸと同じ処理
+                        OnDoubleClick.Execute(null);
+                    },
+                    e =>
+                    {
+                        return e.Key == Key.Enter;
+                    });
+            }
+        }
+        public ICommand _OnKeyDown;
+
+        /// <summary>
+        /// URLｺﾋﾟｰ
+        /// </summary>
+        public ICommand OnCopyUrl
+        {
+            get
+            {
+                return _OnCopyUrl = _OnCopyUrl ?? new RelayCommand(
+                _ =>
+                {
+                    // ﾏｲﾘｽﾄ検索画面へ遷移
+                    MainWindowViewModel.Instance.Current =
+                        new SearchByMylistViewModel(new SearchByMylistModel(Source.MylistUrl));
+                },
+                _ =>
+                {
+                    return true;
+                });
+            }
+        }
+        public ICommand _OnCopyUrl;
+
+        /// <summary>
+        /// 削除処理
+        /// </summary>
+        public ICommand OnDelete
+        {
+            get
+            {
+                return _OnDelete = _OnDelete ?? new RelayCommand(
+                _ =>
+                {
+                    // ﾒﾆｭｰから自身を削除
+                    Parent.Mylists.Remove(Source.MylistId);
+                },
+                _ =>
+                {
+                    return true;
+                });
+            }
+        }
+        public ICommand _OnDelete;
 
         #endregion
 

@@ -132,6 +132,9 @@
   <data name="L_ADD_CHILDREN" xml:space="preserve">
     <value>Add Children</value>
   </data>
+  <data name="L_ADD_MYLIST" xml:space="preserve">
+    <value>マイリスト追加</value>
+  </data>
   <data name="L_CANCEL" xml:space="preserve">
     <value>キャンセル</value>
   </data>
@@ -144,8 +147,17 @@
   <data name="L_COPYRIGHT" xml:space="preserve">
     <value>著作権</value>
   </data>
+  <data name="L_COPY_URL" xml:space="preserve">
+    <value>Urlをコピー</value>
+  </data>
   <data name="L_DELETE" xml:space="preserve">
     <value>削除</value>
+  </data>
+  <data name="L_DESCRIPTION" xml:space="preserve">
+    <value>詳細</value>
+  </data>
+  <data name="L_DOWNLOAD" xml:space="preserve">
+    <value>ダウンロード</value>
   </data>
   <data name="L_LENGTH_SECONDS" xml:space="preserve">
     <value>再生時間</value>
@@ -158,6 +170,9 @@
   </data>
   <data name="L_MENU" xml:space="preserve">
     <value>Menu</value>
+  </data>
+  <data name="L_MP3_CONVERT" xml:space="preserve">
+    <value>mp3へ変換</value>
   </data>
   <data name="L_MYLIST_COUNTER" xml:space="preserve">
     <value>マイリスト</value>
@@ -185,6 +200,9 @@
   </data>
   <data name="L_SEARCH_WORD" xml:space="preserve">
     <value>ワード検索</value>
+  </data>
+  <data name="L_SELECT_DIRECTORY" xml:space="preserve">
+    <value>フォルダ選択</value>
   </data>
   <data name="L_START_TIME" xml:space="preserve">
     <value>登録日時</value>
@@ -228,8 +246,14 @@
   <data name="M_ADD_CHILDREN_DESCRIPTION" xml:space="preserve">
     <value>追加するフォルダ名を入力してください。</value>
   </data>
+  <data name="M_ADD_MYLIST" xml:space="preserve">
+    <value>追加するマイリストのUrlを入力してください。</value>
+  </data>
   <data name="M_ADD_TEMPORARY" xml:space="preserve">
     <value>追加したい動画のURLか "sm" から始まる動画IDを入力してください。</value>
+  </data>
+  <data name="M_MYLIST_SELECT_DIALOG_DESCRIPTION" xml:space="preserve">
+    <value>マイリストを追加するフォルダを選択してください。</value>
   </data>
   <data name="M_REMOVE_DESCRIPTION" xml:space="preserve">
     <value>選択したフォルダを削除します。

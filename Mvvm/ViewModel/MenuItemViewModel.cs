@@ -9,10 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using WpfUtilV1.Mvvm;
+using WpfUtilV1.Mvvm.ViewModel;
 
 namespace NicoV3.Mvvm.ViewModel
 {
-    public class MenuItemViewModel : BindableBase
+    public class MenuItemViewModel : BindableBase, IListViewItem
     {
         /// <summary>
         /// 本ﾒﾆｭｰの親ﾒﾆｭｰ
@@ -64,14 +65,14 @@ namespace NicoV3.Mvvm.ViewModel
         private MenuItemType _Type;
 
         /// <summary>
-        /// ﾒﾆｭｰの種類
+        /// 選択されているかどうか
         /// </summary>
         public bool IsSelected
         {
             get { return _IsSelected; }
             set { SetProperty(ref _IsSelected, value); }
         }
-        private bool _IsSelected;
+        private bool _IsSelected = false;
 
         /// <summary>
         /// ﾒﾆｭｰが紐付くﾜｰｸｽﾍﾟｰｽのｲﾝｽﾀﾝｽ

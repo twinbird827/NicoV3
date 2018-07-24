@@ -106,6 +106,15 @@ namespace NicoV3.Properties {
         }
         
         /// <summary>
+        ///   マイリスト追加 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string L_ADD_MYLIST {
+            get {
+                return ResourceManager.GetString("L_ADD_MYLIST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   キャンセル に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string L_CANCEL {
@@ -133,6 +142,15 @@ namespace NicoV3.Properties {
         }
         
         /// <summary>
+        ///   Urlをコピー に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string L_COPY_URL {
+            get {
+                return ResourceManager.GetString("L_COPY_URL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   著作権 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string L_COPYRIGHT {
@@ -147,6 +165,24 @@ namespace NicoV3.Properties {
         public static string L_DELETE {
             get {
                 return ResourceManager.GetString("L_DELETE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   詳細 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string L_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("L_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   ダウンロード に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string L_DOWNLOAD {
+            get {
+                return ResourceManager.GetString("L_DOWNLOAD", resourceCulture);
             }
         }
         
@@ -183,6 +219,15 @@ namespace NicoV3.Properties {
         public static string L_MENU {
             get {
                 return ResourceManager.GetString("L_MENU", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   mp3へ変換 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string L_MP3_CONVERT {
+            get {
+                return ResourceManager.GetString("L_MP3_CONVERT", resourceCulture);
             }
         }
         
@@ -264,6 +309,15 @@ namespace NicoV3.Properties {
         public static string L_SEARCH_WORD {
             get {
                 return ResourceManager.GetString("L_SEARCH_WORD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   フォルダ選択 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string L_SELECT_DIRECTORY {
+            get {
+                return ResourceManager.GetString("L_SELECT_DIRECTORY", resourceCulture);
             }
         }
         
@@ -394,11 +448,29 @@ namespace NicoV3.Properties {
         }
         
         /// <summary>
+        ///   追加するマイリストのUrlを入力してください。 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string M_ADD_MYLIST {
+            get {
+                return ResourceManager.GetString("M_ADD_MYLIST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   追加したい動画のURLか &quot;sm&quot; から始まる動画IDを入力してください。 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string M_ADD_TEMPORARY {
             get {
                 return ResourceManager.GetString("M_ADD_TEMPORARY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   マイリストを追加するフォルダを選択してください。 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string M_MYLIST_SELECT_DIALOG_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("M_MYLIST_SELECT_DIALOG_DESCRIPTION", resourceCulture);
             }
         }
         

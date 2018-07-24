@@ -154,7 +154,7 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="{x:Static properties:Resources.L_START_TIME}" >
+                    <GridViewColumn Header="{x:Static properties:Resources.L_STATUS}" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Status}" 
