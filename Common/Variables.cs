@@ -19,11 +19,11 @@ namespace NicoV3.Common
         {
             get
             {
-                return Instance[Instance.Section, "MAIL_ADDRESS"];
+                return Instance[Instance.Section, "MAIL_ADDRESS", ""];
             }
             set
             {
-                Instance[Instance.Section, "MAIL_ADDRESS"] = value;
+                Instance[Instance.Section, "MAIL_ADDRESS", ""] = value;
             }
         }
 
@@ -31,7 +31,7 @@ namespace NicoV3.Common
         {
             get
             {
-                var tmp = Instance[Instance.Section, "PASSWORD"];
+                var tmp = Instance[Instance.Section, "PASSWORD", ""];
 
                 return string.IsNullOrWhiteSpace(tmp)
                     ? tmp
@@ -39,7 +39,7 @@ namespace NicoV3.Common
             }
             set
             {
-                Instance[Instance.Section, "PASSWORD"] = Encrypter.EncryptString(value, Constants.ApplicationId);
+                Instance[Instance.Section, "PASSWORD", ""] = Encrypter.EncryptString(value, Constants.ApplicationId);
             }
         }
 
@@ -51,7 +51,7 @@ namespace NicoV3.Common
             }
             private set
             {
-                Instance[Instance.Section, "ENCODING"] = value;
+                Instance[Instance.Section, "ENCODING", ""] = value;
             }
         }
 
@@ -63,7 +63,7 @@ namespace NicoV3.Common
             }
             private set
             {
-                Instance[Instance.Section, "BROWSER_PATH"] = value;
+                Instance[Instance.Section, "BROWSER_PATH", ""] = value;
             }
         }
 
@@ -75,7 +75,7 @@ namespace NicoV3.Common
             }
             private set
             {
-                Instance[Instance.Section, "MYLIST_UPDATE_TIMER"] = value.ToString();
+                Instance[Instance.Section, "MYLIST_UPDATE_TIMER", ""] = value.ToString();
             }
         }
 
@@ -88,7 +88,7 @@ namespace NicoV3.Common
             }
             set
             {
-                Instance[Instance.Section, "MYLIST_UPDATE_DATETIME"] = value.ToString();
+                Instance[Instance.Section, "MYLIST_UPDATE_DATETIME", ""] = value.ToString();
             }
         }
 

@@ -76,7 +76,7 @@ namespace NicoV3.Mvvm.Model
         /// <param name="id">取得したいﾋﾞﾃﾞｵID</param>
         /// <param name="reload">既存情報をﾘﾛｰﾄﾞするか</param>
         /// <returns>ﾋﾞﾃﾞｵ情報</returns>
-        public VideoModel GetVideo(string id, bool reload = true)
+        public VideoModel GetVideo(string id, bool reload = false)
         {
             var video = Videos.FirstOrDefault(v => v.VideoId == id);
 

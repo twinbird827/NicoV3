@@ -88,11 +88,11 @@ namespace NicoV3.Common
             return 
                 await Task.Run(async () => 
                 {
-                    if (LastGetThumnail.IsRunning)
-                    {
-                        while (LastGetThumnail.ElapsedMilliseconds < 500) { }
-                    }
-                    LastGetThumnail.Restart();
+                    //if (LastGetThumnail.IsRunning)
+                    //{
+                    //    while (LastGetThumnail.ElapsedMilliseconds < 500) { }
+                    //}
+                    //LastGetThumnail.Restart();
 
                     return await HttpUtil.DownloadImageAsync(url, App.Current.Dispatcher);
                 });

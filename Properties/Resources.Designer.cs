@@ -61,7 +61,7 @@ namespace NicoV3.Properties {
         }
         
         /// <summary>
-        ///   HH:mm:ss に類似しているローカライズされた文字列を検索します。
+        ///   hh\:mm\:ss に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string F_HHMMSS {
             get {

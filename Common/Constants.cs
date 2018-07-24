@@ -150,9 +150,9 @@ namespace NicoV3.Common
         public const string MylistOfMe = "http://www.nicovideo.jp//api/mylistgroup/list";
 
         /// <summary>
-        /// FlvﾌｧｲﾙUrl
+        /// ｳｫｯﾁUrl
         /// </summary>
-        public const string MovieInfoUrl = "http://www.nicovideo.jp/api/getflv?v={0}";
+        public const string WatchUrl = "http://www.nicovideo.jp/watch/{0}";
 
         /**************************************************
          * 検索処理関連の定数

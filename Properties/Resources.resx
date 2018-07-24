@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="F_HHMMSS" xml:space="preserve">
-    <value>HH:mm:ss</value>
+    <value>hh\:mm\:ss</value>
   </data>
   <data name="F_YYMMDDHHMMSS" xml:space="preserve">
     <value>yy/MM/dd HH:mm:ss</value>

@@ -32,10 +32,6 @@
                 <ResourceDictionary Source="pack://application:,,,/WpfUtilV1;component/Mvvm/View/TreeViewItemResourceDictionary.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <DataTemplate DataType="{x:Type vm:SettingViewModel}">
-                <local:SettingWindow />
-            </DataTemplate>
-
             <DataTemplate DataType="{x:Type vm:SearchByWordViewModel}">
                 <local:SearchByWordWindow />
             </DataTemplate>
@@ -54,6 +50,10 @@
 
             <DataTemplate DataType="{x:Type vm:SearchByFavMylistViewModel}">
                 <local:SearchByFavMylistWindow />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:SettingViewModel}">
+                <local:SettingWindow />
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type vm:VideoDetailViewModel}">

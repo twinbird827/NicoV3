@@ -1,4 +1,5 @@
-﻿using NicoV3.Mvvm.Model;
+﻿using NicoV3.Common;
+using NicoV3.Mvvm.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using WpfUtilV1.Mvvm;
+using WpfUtilV1.Mvvm.Service;
 using WpfUtilV1.Mvvm.ViewModel;
 
 namespace NicoV3.Mvvm.ViewModel
@@ -188,7 +190,22 @@ namespace NicoV3.Mvvm.ViewModel
         /// </summary>
         public BitmapImage Thumbnail
         {
-            get { return _Thumbnail; }
+            //get { return _Thumbnail; }
+            get
+            {
+                if (_Thumbnail == null)
+                {
+                    ServiceFactory.MessageService.Debug(ThumbnailUrl);
+                    // TODO ｻﾑﾈ取得失敗時にﾃﾞﾌｫﾙﾄURLで再取得
+                    // TODO ｻﾑﾈ中/大を選択時、取得失敗した場合はﾃﾞﾌｫﾙﾄｻﾑﾈを拡大する
+                    NicoDataConverter.ToThumbnail(_ThumbnailUrl)
+                        .ContinueWith(
+                            t => Thumbnail = t.Result,
+                            TaskScheduler.FromCurrentSynchronizationContext()
+                        );
+                }
+                return _Thumbnail;
+            }
             set { SetProperty(ref _Thumbnail, value); }
         }
         private BitmapImage _Thumbnail;

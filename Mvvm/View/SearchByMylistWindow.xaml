@@ -62,7 +62,7 @@
 
         <Controls:Underline Grid.Row="1" />
 
-        <ListView Grid.Row="2"
+        <view:ListViewEx Grid.Row="2"
                   ItemsSource="{Binding Items}">
 
             <ListView.Resources>
@@ -164,7 +164,7 @@
                 </GridView>
             </ListView.View>
 
-        </ListView>
+        </view:ListViewEx>
 
         <Grid Visibility="{Binding IsCreatorVisible, Converter={StaticResource booleanToVisibilityConverter}}"
               Grid.Row="3"
