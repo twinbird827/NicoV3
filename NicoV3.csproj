@@ -107,6 +107,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Mvvm\View\VideoDetailWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Mvvm\Converter\Long2TimeSpanConverter.cs" />
@@ -133,6 +137,7 @@
     <Compile Include="Mvvm\Model\SearchByRankingModel.cs" />
     <Compile Include="Mvvm\Model\SearchByTemporaryModel.cs" />
     <Compile Include="Mvvm\Model\SearchByWordModel.cs" />
+    <Compile Include="Mvvm\Model\VideoDetailModel.cs" />
     <Compile Include="Mvvm\Model\VideoModel.cs" />
     <Compile Include="Mvvm\Model\VideoStatusModel.cs" />
     <Compile Include="Mvvm\ViewModel\MainWindowViewModel.cs" />
@@ -149,6 +154,7 @@
     <Compile Include="Mvvm\ViewModel\SearchByWordItemViewModel.cs" />
     <Compile Include="Mvvm\ViewModel\SearchByWordViewModel.cs" />
     <Compile Include="Mvvm\ViewModel\SettingViewModel.cs" />
+    <Compile Include="Mvvm\ViewModel\VideoDetailViewModel.cs" />
     <Compile Include="Mvvm\ViewModel\VideoViewModel.cs" />
     <Compile Include="Mvvm\ViewModel\WorkSpaceViewModel.cs" />
     <Compile Include="Mvvm\View\MainWindow.xaml.cs">
@@ -171,6 +177,9 @@
     </Compile>
     <Compile Include="Mvvm\View\SettingWindow.xaml.cs">
       <DependentUpon>SettingWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Mvvm\View\VideoDetailWindow.xaml.cs">
+      <DependentUpon>VideoDetailWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

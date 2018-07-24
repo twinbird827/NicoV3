@@ -55,7 +55,11 @@
             <DataTemplate DataType="{x:Type vm:SearchByFavMylistViewModel}">
                 <local:SearchByFavMylistWindow />
             </DataTemplate>
-            
+
+            <DataTemplate DataType="{x:Type vm:VideoDetailViewModel}">
+                <local:VideoDetailWindow />
+            </DataTemplate>
+
         </ResourceDictionary>
 
     </Controls:MetroWindow.Resources>

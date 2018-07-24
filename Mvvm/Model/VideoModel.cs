@@ -1,4 +1,5 @@
 ﻿using NicoV3.Common;
+using NicoV3.Mvvm.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -259,7 +260,9 @@ namespace NicoV3.Mvvm.Model
         /// </summary>
         public void StartBrowser()
         {
-            Process.Start(Variables.BrowserPath, VideoUrl);
+            // Process.Start(Variables.BrowserPath, VideoUrl);
+
+            MainWindowViewModel.Instance.Current = new VideoDetailViewModel(VideoId);
 
             // SEEﾘｽﾄに追加
             VideoStatusModel.Instance.SeeVideos.Add(VideoId);
