@@ -140,6 +140,7 @@
     <Compile Include="Mvvm\Model\VideoDetailModel.cs" />
     <Compile Include="Mvvm\Model\VideoModel.cs" />
     <Compile Include="Mvvm\Model\VideoStatusModel.cs" />
+    <Compile Include="Mvvm\Service\NicoV3MessageService.cs" />
     <Compile Include="Mvvm\ViewModel\MainWindowViewModel.cs" />
     <Compile Include="Mvvm\ViewModel\MenuItemViewModel.cs" />
     <Compile Include="Mvvm\ViewModel\MylistViewModel.cs" />
