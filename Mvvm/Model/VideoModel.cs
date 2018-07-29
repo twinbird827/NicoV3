@@ -177,16 +177,16 @@ namespace NicoV3.Mvvm.Model
         {
             get
             {
-                if (_Thumbnail == null)
-                {
-                    // TODO ｻﾑﾈ取得失敗時にﾃﾞﾌｫﾙﾄURLで再取得
-                    // TODO ｻﾑﾈ中/大を選択時、取得失敗した場合はﾃﾞﾌｫﾙﾄｻﾑﾈを拡大する
-                    NicoDataConverter.ToThumbnail(_ThumbnailUrl)
-                        .ContinueWith(
-                            t => Thumbnail = t.Result,
-                            TaskScheduler.FromCurrentSynchronizationContext()
-                        );
-                }
+                //if (_Thumbnail == null)
+                //{
+                //    // TODO ｻﾑﾈ取得失敗時にﾃﾞﾌｫﾙﾄURLで再取得
+                //    // TODO ｻﾑﾈ中/大を選択時、取得失敗した場合はﾃﾞﾌｫﾙﾄｻﾑﾈを拡大する
+                //    NicoDataConverter.ToThumbnail(_ThumbnailUrl)
+                //        .ContinueWith(
+                //            t => Thumbnail = t.Result,
+                //            TaskScheduler.FromCurrentSynchronizationContext()
+                //        );
+                //}
                 return _Thumbnail;
             }
             set { SetProperty(ref _Thumbnail, value); }

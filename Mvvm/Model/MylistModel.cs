@@ -58,7 +58,11 @@ namespace NicoV3.Mvvm.Model
         /// </summary>
         public string MylistId
         {
-            get { return NicoDataConverter.ToId(MylistUrl); }
+            get
+            {
+                var last = NicoDataConverter.ToId(MylistUrl);
+                return last.Substring(0, last.IndexOf("?"));
+            }
         }
 
         /// <summary>
@@ -172,7 +176,7 @@ namespace NicoV3.Mvvm.Model
         /// </summary>
         public void Reload()
         {
-            var result = XDocument.Load(new StringReader(MylistUrl)).Root;
+            var result = XDocument.Load(new StringReader(GetSmileVideoHtmlText(MylistUrl))).Root;
             var channel = result.Descendants("channel").First();
 
             // ﾏｲﾘｽﾄ情報を本ｲﾝｽﾀﾝｽのﾌﾟﾛﾊﾟﾃｨに転記

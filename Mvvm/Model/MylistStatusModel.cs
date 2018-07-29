@@ -58,7 +58,7 @@ namespace NicoV3.Mvvm.Model
         /// <param name="id">取得したいﾏｲﾘｽﾄID</param>
         /// <param name="reload">既存情報をﾘﾛｰﾄﾞするか</param>
         /// <returns>ﾏｲﾘｽﾄ情報</returns>
-        public MylistModel GetMylist(string id, bool reload = true)
+        public MylistModel GetMylist(string id, bool reload = false)
         {
             var mylist = Mylists.FirstOrDefault(m => m.MylistId == id);
 

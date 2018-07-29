@@ -204,6 +204,13 @@ namespace NicoV3.Mvvm.ViewModel
                   // 検索実行
                   this.Source.Reload();
 
+                  this.MylistTitle = Source.MylistTitle;
+                  this.MylistCreator = Source.MylistCreator;
+                  this.MylistDescription = Source.MylistDescription;
+                  this.UserId = Source.UserId;
+                  this.UserThumbnail = Source.UserThumbnail;
+                  this.MylistDate = Source.MylistDate;
+
                   // ｵｰﾅｰ情報を表示するかどうか
                   this.IsCreatorVisible = Source.Videos.Any();
               },

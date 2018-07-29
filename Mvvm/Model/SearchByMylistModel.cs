@@ -151,6 +151,20 @@ namespace NicoV3.Mvvm.Model
             Source = new MylistModel(Word, OrderBy);
             Source.PropertyChanged += OnPropertyChanged;
 
+            this.MylistTitle = Source.MylistTitle;
+            this.MylistCreator = Source.MylistCreator;
+            this.MylistDescription = Source.MylistDescription;
+            this.UserId = Source.UserId;
+            this.UserThumbnailUrl = Source.UserThumbnailUrl;
+            this.UserThumbnail = Source.UserThumbnail;
+            this.MylistDate = Source.MylistDate;
+
+            this.Videos.Clear();
+            foreach (var video in Source.Videos)
+            {
+                this.Videos.Add(video);
+            }
+
             ServiceFactory.MessageService.Debug(Word);
         }
 
