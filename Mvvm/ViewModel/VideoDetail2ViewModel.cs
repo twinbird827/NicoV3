@@ -65,11 +65,11 @@ namespace NicoV3.Mvvm.ViewModel
             {
                 return _OnLoaded = _OnLoaded ?? new RelayCommand<string>(async url =>
                 {
-                    var listener = new HttpListener();
-                    listener.ConnectionReceived += listner_ConnectionReceived;
-                    await listener.BindServiceNameAsync("81");
+                    //var listener = new HttpListener();
+                    //listener.ConnectionReceived += listner_ConnectionReceived;
+                    //await listener.BindServiceNameAsync("81");
 
-                    FlvFile = new Uri("127.0.0.1:81", UriKind.Absolute);
+                    //FlvFile = new Uri("127.0.0.1:81", UriKind.Absolute);
                 });
             }
         }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -275,19 +276,59 @@ namespace NicoV3.Mvvm.Model
 
         public async Task<MemoryStream> GetMovieStreamAsync()
         {
-            return await Task.Run(async () =>
+            using (var client = new HttpClient())
             {
-                // 動画Urlに接続
-                var tmp = GetSmileVideoHtmlText(string.Format(Constants.WatchUrl, VideoId));
-                // 動画情報を取得
-                var txt = GetSmileVideoHtmlText(string.Format(Constants.GetFlvUrl, VideoId));
-                // 動画情報から動画ﾀﾞｳﾝﾛｰﾄﾞ用Urlを取得
-                var url = Regex.Match(txt, @"&url=.*").Value.Replace("&url=", "");
-                // 動画ﾃﾞｰﾀを取得
-                var bytes = await HttpUtil.DownLoadImageBytesAsync(url);
-                // ﾒﾓﾘに格納して返却
-                return new MemoryStream(bytes);
-            });
+                return await Task.Run(async () =>
+                {
+                    await client.PostAsync(
+                        "https://secure.nicovideo.jp/secure/login?site=niconico",
+                        new FormUrlEncodedContent(new Dictionary<string, string>()
+                        {
+                            { "mail", Variables.MailAddress },
+                            { "password", Variables.Password },
+                        }));
+
+                    await client.GetStringAsync("http://www.nicovideo.jp/watch/" + VideoId);
+
+                    var responseGetFlv = await client.GetStringAsync(new Uri("http://flapi.nicovideo.jp/api/getflv/" + VideoId));
+                    string url = Uri.UnescapeDataString(responseGetFlv);
+
+                    var FlvUrl = Regex.Match(url, @"&url=.*").Value.Replace("&url=", "");
+                    var threadId = Regex.Match(url, @"thread_id=.*&l=").Value.Replace("thread_id=", "").Replace("&l=", "");
+                    var msgUrl = Regex.Match(url, @"&ms=.*&ms_sub=").Value.Replace("&ms=", "").Replace("&ms_sub=", "");
+                    var request = new HttpRequestMessage(HttpMethod.Get, FlvUrl);
+                    var response = await client.SendAsync(request, System.Net.Http.HttpCompletionOption.ResponseHeadersRead);
+                    var contentHeaders = response.Content.Headers;
+
+                    var bytes = await client.GetByteArrayAsync(FlvUrl);
+                    return new MemoryStream(bytes);
+                });
+            }
+            //return await Task.Run(async () =>
+            //{
+            //    // 動画Urlに接続
+            //    var tmp = GetSmileVideoHtmlText(string.Format(Constants.WatchUrl, VideoId));
+            //    // 動画情報を取得
+            //    var txt = HttpUtil.FromUrlEncode(GetSmileVideoHtmlText(string.Format(Constants.GetFlvUrl, VideoId)));
+            //    //var txt = Uri.UnescapeDataString(GetSmileVideoHtmlText(string.Format(Constants.GetFlvUrl, VideoId)));
+            //    // 動画情報から動画ﾀﾞｳﾝﾛｰﾄﾞ用Urlを取得
+            //    var url = Regex.Match(txt, @"&url=.*").Value.Replace("&url=", "");
+            //    // 動画ﾃﾞｰﾀを取得
+            //    var req = GetRequest(url);
+
+            //    using (var res = req.GetResponse())
+            //    using (var st = res.GetResponseStream())
+            //    using (var ms = new MemoryStream())
+            //    {
+            //        int read;
+            //        byte[] buffer = new byte[1024];
+            //        while ((read = st.Read(buffer, 0, buffer.Length)) > 0)
+            //        {
+            //            ms.Write(buffer, 0, read);
+            //        }
+            //        return ms;
+            //    }
+            //});
         }
     }
 }

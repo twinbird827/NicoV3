@@ -146,7 +146,7 @@ namespace NicoV3.Mvvm.ViewModel
         {
             get
             {
-                if (_UserThumbnail == null)
+                if (_UserThumbnail == null && UserThumbnailUrl != null)
                 {
                     // TODO ｻﾑﾈ取得失敗時にﾃﾞﾌｫﾙﾄURLで再取得
                     // TODO ｻﾑﾈ中/大を選択時、取得失敗した場合はﾃﾞﾌｫﾙﾄｻﾑﾈを拡大する
