@@ -187,6 +187,15 @@ namespace NicoV3.Properties {
         }
         
         /// <summary>
+        ///   JUMP に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string L_JUMP {
+            get {
+                return ResourceManager.GetString("L_JUMP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   再生時間 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string L_LENGTH_SECONDS {

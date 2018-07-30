@@ -92,5 +92,16 @@ namespace NicoV3.Common
             }
         }
 
+        public static string MovieTemporaryPath
+        {
+            get
+            {
+                return Instance[Instance.Section, "MOVIE_TEMPORARY_PATH", @".\tmp"];
+            }
+            private set
+            {
+                Instance[Instance.Section, "MOVIE_TEMPORARY_PATH", ""] = value;
+            }
+        }
     }
 }

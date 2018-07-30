@@ -33,7 +33,7 @@ namespace NicoV3.Mvvm.ViewModel
             this.MylistCreator = Source.MylistCreator;
             this.MylistDescription = Source.MylistDescription;
             this.UserId = Source.UserId;
-            this.UserThumbnail = Source.UserThumbnail;
+            //this.UserThumbnail = Source.UserThumbnail;
             this.MylistDate = Source.MylistDate;
 
             Items = Source.Videos.ToSyncedSynchronizationContextCollection(
@@ -130,11 +130,33 @@ namespace NicoV3.Mvvm.ViewModel
         private string _UserId = null;
 
         /// <summary>
+        /// 作成者のｻﾑﾈｲﾙUrl
+        /// </summary>
+        public string UserThumbnailUrl
+        {
+            get { return _UserThumbnailUrl; }
+            set { SetProperty(ref _UserThumbnailUrl, value); }
+        }
+        private string _UserThumbnailUrl = null;
+
+        /// <summary>
         /// 作成者のｻﾑﾈｲﾙ
         /// </summary>
         public BitmapImage UserThumbnail
         {
-            get { return _UserThumbnail; }
+            get
+            {
+                if (_UserThumbnail == null)
+                {
+                    // TODO ｻﾑﾈ取得失敗時にﾃﾞﾌｫﾙﾄURLで再取得
+                    // TODO ｻﾑﾈ中/大を選択時、取得失敗した場合はﾃﾞﾌｫﾙﾄｻﾑﾈを拡大する
+                    NicoDataConverter.ToThumbnail(UserThumbnailUrl).ContinueWith(
+                        t => UserThumbnail = t.Result,
+                        TaskScheduler.FromCurrentSynchronizationContext()
+                    );
+                }
+                return _UserThumbnail;
+            }
             set { SetProperty(ref _UserThumbnail, value); }
         }
         private BitmapImage _UserThumbnail = null;
@@ -177,9 +199,9 @@ namespace NicoV3.Mvvm.ViewModel
                 case nameof(UserId):
                     this.UserId = Source.UserId;
                     break;
-                case nameof(UserThumbnail):
-                    this.UserThumbnail = Source.UserThumbnail;
-                    break;
+                //case nameof(UserThumbnail):
+                //    this.UserThumbnail = Source.UserThumbnail;
+                //    break;
                 case nameof(MylistDate):
                     this.MylistDate = Source.MylistDate;
                     break;
@@ -208,7 +230,7 @@ namespace NicoV3.Mvvm.ViewModel
                   this.MylistCreator = Source.MylistCreator;
                   this.MylistDescription = Source.MylistDescription;
                   this.UserId = Source.UserId;
-                  this.UserThumbnail = Source.UserThumbnail;
+                  //this.UserThumbnail = Source.UserThumbnail;
                   this.MylistDate = Source.MylistDate;
 
                   // ｵｰﾅｰ情報を表示するかどうか

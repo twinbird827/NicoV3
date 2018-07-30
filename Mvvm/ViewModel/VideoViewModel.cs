@@ -41,7 +41,7 @@ namespace NicoV3.Mvvm.ViewModel
             LastCommentTime = Source.LastCommentTime;
             LengthSeconds = Source.LengthSeconds;
             ThumbnailUrl = Source.ThumbnailUrl;
-            Thumbnail = Source.Thumbnail;
+            //Thumbnail = Source.Thumbnail; TODO
             CommunityIcon = Source.CommunityIcon;
             LastUpdateTime = Source.LastUpdateTime;
             LastResBody = Source.LastResBody;
@@ -296,9 +296,9 @@ namespace NicoV3.Mvvm.ViewModel
                 case nameof(ThumbnailUrl):
                     this.ThumbnailUrl = Source.ThumbnailUrl;
                     break;
-                case nameof(Thumbnail):
-                    this.Thumbnail = Source.Thumbnail;
-                    break;
+                //case nameof(Thumbnail): TODO
+                //    this.Thumbnail = Source.Thumbnail;
+                //    break;
                 case nameof(CommunityIcon):
                     this.CommunityIcon = Source.CommunityIcon;
                     break;

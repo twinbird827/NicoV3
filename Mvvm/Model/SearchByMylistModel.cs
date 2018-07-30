@@ -99,15 +99,15 @@ namespace NicoV3.Mvvm.Model
         }
         private string _UserThumbnailUrl = null;
 
-        /// <summary>
-        /// 作成者のｻﾑﾈｲﾙ
-        /// </summary>
-        public BitmapImage UserThumbnail
-        {
-            get { return _UserThumbnail; }
-            set { SetProperty(ref _UserThumbnail, value); }
-        }
-        private BitmapImage _UserThumbnail = null;
+        ///// <summary>
+        ///// 作成者のｻﾑﾈｲﾙ
+        ///// </summary>
+        //public BitmapImage UserThumbnail
+        //{
+        //    get { return _UserThumbnail; }
+        //    set { SetProperty(ref _UserThumbnail, value); }
+        //}
+        //private BitmapImage _UserThumbnail = null;
 
         /// <summary>
         /// 更新日時
@@ -156,7 +156,7 @@ namespace NicoV3.Mvvm.Model
             this.MylistDescription = Source.MylistDescription;
             this.UserId = Source.UserId;
             this.UserThumbnailUrl = Source.UserThumbnailUrl;
-            this.UserThumbnail = Source.UserThumbnail;
+            //this.UserThumbnail = Source.UserThumbnail;
             this.MylistDate = Source.MylistDate;
 
             this.Videos.Clear();
@@ -192,9 +192,9 @@ namespace NicoV3.Mvvm.Model
                 case nameof(UserThumbnailUrl):
                     this.UserThumbnailUrl = Source.UserThumbnailUrl;
                     break;
-                case nameof(UserThumbnail):
-                    this.UserThumbnail = Source.UserThumbnail;
-                    break;
+                //case nameof(UserThumbnail):
+                //    this.UserThumbnail = Source.UserThumbnail;
+                //    break;
                 case nameof(MylistDate):
                     this.MylistDate = Source.MylistDate;
                     break;

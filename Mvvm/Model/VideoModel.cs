@@ -6,9 +6,11 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 using System.Xml.Linq;
+using WpfUtilV1.Common;
 
 namespace NicoV3.Mvvm.Model
 {
@@ -164,34 +166,34 @@ namespace NicoV3.Mvvm.Model
                 if (_ThumbnailUrl != value)
                 {
                     SetProperty(ref _ThumbnailUrl, value);
-                    Thumbnail = null;
+                    //TODO Thumbnail = null;
                 }
             }
         }
         private string _ThumbnailUrl = null;
 
-        /// <summary>
-        /// ｻﾑﾈｲﾙ
-        /// </summary>
-        public BitmapImage Thumbnail
-        {
-            get
-            {
-                //if (_Thumbnail == null)
-                //{
-                //    // TODO ｻﾑﾈ取得失敗時にﾃﾞﾌｫﾙﾄURLで再取得
-                //    // TODO ｻﾑﾈ中/大を選択時、取得失敗した場合はﾃﾞﾌｫﾙﾄｻﾑﾈを拡大する
-                //    NicoDataConverter.ToThumbnail(_ThumbnailUrl)
-                //        .ContinueWith(
-                //            t => Thumbnail = t.Result,
-                //            TaskScheduler.FromCurrentSynchronizationContext()
-                //        );
-                //}
-                return _Thumbnail;
-            }
-            set { SetProperty(ref _Thumbnail, value); }
-        }
-        private BitmapImage _Thumbnail;
+        ///// <summary>
+        ///// ｻﾑﾈｲﾙ
+        ///// </summary>
+        //public BitmapImage Thumbnail
+        //{
+        //    get
+        //    {
+        //        //if (_Thumbnail == null)
+        //        //{
+        //        //    // TODO ｻﾑﾈ取得失敗時にﾃﾞﾌｫﾙﾄURLで再取得
+        //        //    // TODO ｻﾑﾈ中/大を選択時、取得失敗した場合はﾃﾞﾌｫﾙﾄｻﾑﾈを拡大する
+        //        //    NicoDataConverter.ToThumbnail(_ThumbnailUrl)
+        //        //        .ContinueWith(
+        //        //            t => Thumbnail = t.Result,
+        //        //            TaskScheduler.FromCurrentSynchronizationContext()
+        //        //        );
+        //        //}
+        //        return _Thumbnail;
+        //    }
+        //    set { SetProperty(ref _Thumbnail, value); }
+        //}
+        //private BitmapImage _Thumbnail;
 
         /// <summary>
         /// ｺﾐｭﾆﾃｨｱｲｺﾝのUrl
@@ -262,13 +264,30 @@ namespace NicoV3.Mvvm.Model
         {
             // Process.Start(Variables.BrowserPath, VideoUrl);
 
-            MainWindowViewModel.Instance.Current = new VideoDetailViewModel(VideoId);
+            MainWindowViewModel.Instance.Current = new VideoDetailViewModel(this);
 
             // SEEﾘｽﾄに追加
             VideoStatusModel.Instance.SeeVideos.Add(VideoId);
 
             // NEWﾘｽﾄから削除
             VideoStatusModel.Instance.NewVideos.Remove(VideoId);
+        }
+
+        public async Task<MemoryStream> GetMovieStreamAsync()
+        {
+            return await Task.Run(async () =>
+            {
+                // 動画Urlに接続
+                var tmp = GetSmileVideoHtmlText(string.Format(Constants.WatchUrl, VideoId));
+                // 動画情報を取得
+                var txt = GetSmileVideoHtmlText(string.Format(Constants.GetFlvUrl, VideoId));
+                // 動画情報から動画ﾀﾞｳﾝﾛｰﾄﾞ用Urlを取得
+                var url = Regex.Match(txt, @"&url=.*").Value.Replace("&url=", "");
+                // 動画ﾃﾞｰﾀを取得
+                var bytes = await HttpUtil.DownLoadImageBytesAsync(url);
+                // ﾒﾓﾘに格納して返却
+                return new MemoryStream(bytes);
+            });
         }
     }
 }

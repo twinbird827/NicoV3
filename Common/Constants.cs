@@ -154,6 +154,8 @@ namespace NicoV3.Common
         /// </summary>
         public const string WatchUrl = "http://www.nicovideo.jp/watch/{0}";
 
+        public const string GetFlvUrl = "http://flapi.nicovideo.jp/api/getflv/{0}";
+
         /**************************************************
          * 検索処理関連の定数
          **************************************************/

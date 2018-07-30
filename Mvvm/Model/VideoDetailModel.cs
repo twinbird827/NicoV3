@@ -89,7 +89,7 @@ namespace NicoV3.Mvvm.Model
                         }));
 
                     await client.GetStringAsync("http://www.nicovideo.jp/watch/" + Source.VideoId);
-
+                    
                     var responseGetFlv = await client.GetStringAsync(new Uri("http://flapi.nicovideo.jp/api/getflv/" + Source.VideoId));
                     string url = Uri.UnescapeDataString(responseGetFlv);
 
@@ -105,43 +105,6 @@ namespace NicoV3.Mvvm.Model
 
                     return default(object);
                 });
-            }
-        }
-
-        /// <summary>
-        /// Flvﾌｧｲﾙを取得します。
-        /// </summary>
-        public MemoryStream GetFlvFile()
-        {
-            try
-            {
-                var hwr = (HttpWebRequest)WebRequest.Create(FlvUrl);
-                hwr.CookieContainer = LoginModel.Instance.Cookie;
-                hwr.Timeout = 30 * 1000;
-
-                WebResponse wres = hwr.GetResponse();
-
-                using (var res = wres.GetResponseStream())
-                using (var mstream = new MemoryStream())
-                {
-                    int intBuffSize = 1024;
-                    int intFileSize = 0;
-                    int intRet = 0;
-                    while (true)
-                    {
-                        byte[] bytBuff = new byte[intBuffSize];
-                        intRet = res.Read(bytBuff, 0, intBuffSize);
-                        if (intRet == 0) break;
-                        mstream.Write(bytBuff, 0, intRet);
-                        intFileSize += intRet;
-                    }
-                    return mstream;
-                }
-            }
-            catch(Exception ex)
-            {
-                ServiceFactory.MessageService.Exception(ex);
-                throw;
             }
         }
     }

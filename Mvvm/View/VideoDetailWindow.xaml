@@ -9,6 +9,8 @@
              xmlns:properties="clr-namespace:NicoV3.Properties"
              xmlns:converter="clr-namespace:NicoV3.Mvvm.Converter"
              xmlns:view="clr-namespace:WpfUtilV1.Mvvm.View;assembly=WpfUtilV1"
+             view:UserControlLoadedBehavior.Command="{Binding OnLoaded}"
+             view:UserControlLoadedBehavior.CommandParameter="{Binding JumpUrl}"
              mc:Ignorable="d" >
     <Grid>
         <Grid.RowDefinitions>
@@ -22,6 +24,7 @@
 
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
@@ -31,20 +34,29 @@
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
 
-            <Button Grid.Column="0"
-                    Command="{Binding OnCopyUrl}"
-                    Content="{x:Static properties:Resources.L_COPY_URL}"
-                    Width="70"
-                    IsDefault="True" />
-
+            <TextBox Grid.Column="0"
+                     Text="{Binding JumpUrl}" />
+            
             <Button Grid.Column="1"
-                    Command="{Binding OnCopyUrl}"
-                    Content="{x:Static properties:Resources.L_DOWNLOAD}"
+                    Command="{Binding OnJump}"
+                    Content="{x:Static properties:Resources.L_JUMP}"
                     Width="70"
                     IsDefault="True" />
 
             <Button Grid.Column="2"
                     Command="{Binding OnCopyUrl}"
+                    Content="{x:Static properties:Resources.L_COPY_URL}"
+                    Width="70"
+                    IsDefault="True" />
+
+            <Button Grid.Column="3"
+                    Command="{Binding OnDownload}"
+                    Content="{x:Static properties:Resources.L_DOWNLOAD}"
+                    Width="70"
+                    IsDefault="True" />
+
+            <Button Grid.Column="4"
+                    Command="{Binding OnMp3Convert}"
                     Content="{x:Static properties:Resources.L_MP3_CONVERT}"
                     Width="70"
                     IsDefault="True" />

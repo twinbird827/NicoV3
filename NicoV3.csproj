@@ -155,6 +155,7 @@
     <Compile Include="Mvvm\ViewModel\SearchByWordItemViewModel.cs" />
     <Compile Include="Mvvm\ViewModel\SearchByWordViewModel.cs" />
     <Compile Include="Mvvm\ViewModel\SettingViewModel.cs" />
+    <Compile Include="Mvvm\ViewModel\VideoDetail2ViewModel.cs" />
     <Compile Include="Mvvm\ViewModel\VideoDetailViewModel.cs" />
     <Compile Include="Mvvm\ViewModel\VideoViewModel.cs" />
     <Compile Include="Mvvm\ViewModel\WorkSpaceViewModel.cs" />

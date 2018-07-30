@@ -117,7 +117,19 @@ namespace NicoV3.Mvvm.ViewModel
         /// </summary>
         public BitmapImage UserThumbnail
         {
-            get { return _UserThumbnail; }
+            get
+            {
+                if (_UserThumbnail == null)
+                {
+                    // TODO ｻﾑﾈ取得失敗時にﾃﾞﾌｫﾙﾄURLで再取得
+                    // TODO ｻﾑﾈ中/大を選択時、取得失敗した場合はﾃﾞﾌｫﾙﾄｻﾑﾈを拡大する
+                    NicoDataConverter.ToThumbnail(UserThumbnailUrl).ContinueWith(
+                        t => UserThumbnail = t.Result,
+                        TaskScheduler.FromCurrentSynchronizationContext()
+                    );
+                }
+                return _UserThumbnail;
+            }
             set { SetProperty(ref _UserThumbnail, value); }
         }
         private BitmapImage _UserThumbnail = null;
@@ -173,9 +185,9 @@ namespace NicoV3.Mvvm.ViewModel
                 case nameof(UserThumbnailUrl):
                     this.UserThumbnailUrl = Source.UserThumbnailUrl;
                     break;
-                case nameof(UserThumbnail):
-                    this.UserThumbnail = Source.UserThumbnail;
-                    break;
+                //case nameof(UserThumbnail):
+                //    this.UserThumbnail = Source.UserThumbnail;
+                //    break;
                 case nameof(MylistDate):
                     this.MylistDate = Source.MylistDate;
                     break;

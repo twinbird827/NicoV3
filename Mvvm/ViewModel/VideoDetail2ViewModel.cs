@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -13,11 +14,11 @@ using WpfUtilV1.Mvvm.Service;
 
 namespace NicoV3.Mvvm.ViewModel
 {
-    public class VideoDetailViewModel : WorkSpaceViewModel
+    public class VideoDetail2ViewModel : WorkSpaceViewModel
     {
         public VideoModel Source { get; set; }
 
-        public VideoDetailViewModel(VideoModel source)
+        public VideoDetail2ViewModel(VideoModel source)
         {
             Source = source;
 
@@ -64,29 +65,11 @@ namespace NicoV3.Mvvm.ViewModel
             {
                 return _OnLoaded = _OnLoaded ?? new RelayCommand<string>(async url =>
                 {
-                    var path = Path.Combine(Variables.MovieTemporaryPath, NicoDataConverter.ToId(url));
+                    var listener = new HttpListener();
+                    listener.ConnectionReceived += listner_ConnectionReceived;
+                    await listener.BindServiceNameAsync("81");
 
-                    if (!File.Exists(path))
-                    {
-                        // TODO ある条件でﾃﾝﾎﾟﾗﾘをｸﾘｰﾝｱｯﾌﾟする。
-
-                        int read;
-                        byte[] buffer = new byte[1024];
-                        using (var ms = await Source.GetMovieStreamAsync())
-                        using (var fs = new FileStream(path, FileMode.CreateNew, FileAccess.Write))
-                        {
-                            while ((read = ms.Read(buffer, 0, buffer.Length)) > 0)
-                            {
-                                fs.Write(buffer, 0, read);
-                            }
-                        }
-                    }
-
-                    // Uri変更
-                    FlvFile = new Uri(path);
-
-                    // ｼﾞｬﾝﾌﾟ先初期化
-                    JumpUrl = string.Empty;
+                    FlvFile = new Uri("127.0.0.1:81", UriKind.Absolute);
                 });
             }
         }

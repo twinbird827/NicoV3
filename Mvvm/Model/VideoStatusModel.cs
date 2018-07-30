@@ -1,16 +1,18 @@
-﻿using StatefulModel;
+﻿using NicoV3.Common;
+using StatefulModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WpfUtilV1.Common;
 using WpfUtilV1.Mvvm;
 
 namespace NicoV3.Mvvm.Model
 {
     public class VideoStatusModel : BindableBase
     {
-        public static VideoStatusModel Instance { get; } = new VideoStatusModel();
+        public static VideoStatusModel Instance { get; } = GetInstance();
 
         private VideoStatusModel()
         {
@@ -46,6 +48,20 @@ namespace NicoV3.Mvvm.Model
             set { SetProperty(ref _SeeVideos, value); }
         }
         private ObservableSynchronizedCollection<string> _SeeVideos = new ObservableSynchronizedCollection<string>();
+
+        private static VideoStatusModel GetInstance()
+        {
+            var instance = JsonUtil.Deserialize<VideoStatusModel>(Constants.VideoStatusModelPath);
+
+            if (instance != null)
+            {
+                return instance;
+            }
+            else
+            {
+                return new VideoStatusModel();
+            }
+        }
 
         /// <summary>
         /// ﾋﾞﾃﾞｵ情報をﾏｰｼﾞします。
@@ -125,6 +141,14 @@ namespace NicoV3.Mvvm.Model
 
             // SEEﾘｽﾄから削除
             SeeVideos.Remove(id);
+        }
+
+        protected override void OnDisposing()
+        {
+            base.OnDisposing();
+
+            // ｲﾝｽﾀﾝｽのﾃﾞｰﾀを保存する。
+            JsonUtil.Serialize(Constants.VideoStatusModelPath, this);
         }
     }
 }
