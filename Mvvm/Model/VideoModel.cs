@@ -265,7 +265,7 @@ namespace NicoV3.Mvvm.Model
         {
             // Process.Start(Variables.BrowserPath, VideoUrl);
 
-            MainWindowViewModel.Instance.Current = new VideoDetailViewModel(this);
+            MainWindowViewModel.Instance.Current = new VideoDetail2ViewModel(this);
 
             // SEEﾘｽﾄに追加
             VideoStatusModel.Instance.SeeVideos.Add(VideoId);
@@ -329,6 +329,22 @@ namespace NicoV3.Mvvm.Model
             //        return ms;
             //    }
             //});
+        }
+
+        public async Task<Uri> GetMovieUriAsync()
+        {
+            return await Task.Run(async () =>
+            {
+                // 動画Urlに接続
+                var tmp = GetSmileVideoHtmlText(string.Format(Constants.WatchUrl, VideoId));
+                // 動画情報を取得
+                var txt = HttpUtil.FromUrlEncode(GetSmileVideoHtmlText(string.Format(Constants.GetFlvUrl, VideoId)));
+                //var txt = Uri.UnescapeDataString(GetSmileVideoHtmlText(string.Format(Constants.GetFlvUrl, VideoId)));
+                // 動画情報から動画ﾀﾞｳﾝﾛｰﾄﾞ用Urlを取得
+                var url = Regex.Match(txt, @"&url=.*").Value.Replace("&url=", "");
+
+                return new Uri(url);
+            });
         }
     }
 }

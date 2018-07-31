@@ -10,6 +10,5 @@ namespace NicoV3.Mvvm.ViewModel
 {
     public class WorkSpaceViewModel : ViewModelBase
     {
-        protected IDialogCoordinator DC { get { return MainWindowViewModel.Instance.DialogCoordinator; } }
     }
 }

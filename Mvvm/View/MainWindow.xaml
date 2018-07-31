@@ -60,6 +60,10 @@
                 <local:VideoDetailWindow />
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type vm:VideoDetail2ViewModel}">
+                <local:VideoDetailWindow />
+            </DataTemplate>
+
         </ResourceDictionary>
 
     </Controls:MetroWindow.Resources>
