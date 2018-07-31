@@ -161,8 +161,8 @@ namespace NicoV3.Mvvm.ViewModel
             Console.WriteLine("Waiting for a connection...");
             listener.BeginAccept(new AsyncCallback(AcceptCallback), state);
 
-            FlvFile = new Uri("127.0.0.1:81", UriKind.Absolute);
-            
+            FlvFile = new Uri("127.0.0.1:81", UriKind.Relative);
+
             // Wait until a connection is made before continuing.  
             allDone.WaitOne();
         }
