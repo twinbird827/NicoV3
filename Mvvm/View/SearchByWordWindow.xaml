@@ -150,7 +150,10 @@
                     <GridViewColumn Header="{x:Static properties:Resources.L_THUMBNAIL}">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Image Source="{Binding Thumbnail}" />
+                                <Image Source="{Binding Thumbnail}"
+                                       Stretch="Fill"
+                                       Width="{Binding RelativeSource={RelativeSource Self}, Path=Source.PixelWidth}" 
+                                       Height="{Binding RelativeSource={RelativeSource Self}, Path=Source.PixelHeight}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
