@@ -30,6 +30,15 @@ namespace NicoV3.Mvvm.ViewModel
         {
             Parent = parent;
             Source = model;
+            this.MylistUrl = Source.MylistUrl;
+            this.OrderBy = Source.OrderBy;
+            this.MylistTitle = Source.MylistTitle;
+            this.MylistCreator = Source.MylistCreator;
+            this.MylistDescription = Source.MylistDescription;
+            this.UserId = Source.UserId;
+            this.UserThumbnailUrl = Source.UserThumbnailUrl;
+            this.MylistDate = Source.MylistDate;
+
         }
 
         #region Model Properties

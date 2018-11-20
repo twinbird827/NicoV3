@@ -134,8 +134,10 @@
 
             <StackPanel Orientation="Vertical">
 
+                <!-- 
                 <Button Content="FullMenu"
                     Command="{Binding OnOpenFlyout}" />
+                -->
 
                 <Button Content="SearchByWord"
                     Command="{Binding OnClickMenu}"

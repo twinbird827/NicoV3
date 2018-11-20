@@ -251,17 +251,20 @@ namespace NicoV3.Mvvm.ViewModel
             get
             {
                 return _OnAdd = _OnAdd ?? new RelayCommand(
-                async _ =>
+                _ =>
                 {
-                    var vm = new MylistSelectDialogViewModel(
-                        dvm =>
-                        {
-                            dvm.MenuItems
-                                .First(mi => mi.IsSelected)
-                                .Source.Mylists.Add(NicoDataConverter.ToId(Source.Word));
-                        });
+                    MenuModel.Instance.Children
+                        .First(m => m.Type == MenuItemType.MylistOfOther)
+                        .Mylists.Add(Word);
+                    //var vm = new MylistSelectDialogViewModel(
+                    //    dvm =>
+                    //    {
+                    //        dvm.MenuItems
+                    //            .First(mi => mi.IsSelected)
+                    //            .Source.Mylists.Add(NicoDataConverter.ToId(Source.Word));
+                    //    });
 
-                    await MainWindowViewModel.Instance.ShowMetroDialogAsync(vm.Dialog);
+                    //await MainWindowViewModel.Instance.ShowMetroDialogAsync(vm.Dialog);
                 },
                 _ => {
                     return IsCreatorVisible;

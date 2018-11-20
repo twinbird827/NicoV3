@@ -218,13 +218,13 @@ namespace NicoV3.Mvvm.ViewModel
 
                     Variables.MylistUpdateDatetime = DateTime.Now;
 
-                var videos = GetAllMenu(MenuModel.Instance.Children)
-                        .SelectMany(m => m.Mylists)
-                        .Select(m => { Thread.Sleep(500); return MylistStatusModel.Instance.GetMylist(m); })
-                        .SelectMany(m => m.Videos)
-                        .Where(v => !SearchByTemporaryModel.Instance.Videos.Any(t => t == v))
-                        .Select(v => { Thread.Sleep(500); return VideoStatusModel.Instance.GetVideo(v); })
-                        .Where(v => lastConfirmTime < v.LastUpdateTime);
+                    var videos = GetAllMenu(MenuModel.Instance.Children)
+                            .SelectMany(m => m.Mylists)
+                            .Select(m => { Thread.Sleep(500); return MylistStatusModel.Instance.GetMylist(m); })
+                            .SelectMany(m => m.Videos)
+                            .Where(v => !SearchByTemporaryModel.Instance.Videos.Any(t => t == v))
+                            .Select(v => { Thread.Sleep(500); return VideoStatusModel.Instance.GetVideo(v); })
+                            .Where(v => lastConfirmTime < v.StartTime);
 
                     return videos;
                 });

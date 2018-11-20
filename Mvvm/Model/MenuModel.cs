@@ -48,8 +48,9 @@ namespace NicoV3.Mvvm.Model
                         new MenuItemModel("SearchByWord", MenuItemType.SearchByWord),
                         new MenuItemModel("Ranking", MenuItemType.Ranking),
                         new MenuItemModel("Temporary", MenuItemType.Temporary),
-                        new MenuItemModel("MyListOfMe", MenuItemType.MylistOfMe),
                         new MenuItemModel("SearchByMylist", MenuItemType.SearchByMylist),
+                        new MenuItemModel("MyListOfMe", MenuItemType.MylistOfMe),
+                        new MenuItemModel("MylistOfOther", MenuItemType.MylistOfOther),
                         new MenuItemModel("Setting", MenuItemType.Setting)
                     }
                 };

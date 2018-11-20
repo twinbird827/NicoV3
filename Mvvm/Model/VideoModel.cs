@@ -263,9 +263,9 @@ namespace NicoV3.Mvvm.Model
         /// </summary>
         public void StartBrowser()
         {
-            // Process.Start(Variables.BrowserPath, VideoUrl);
+            Process.Start(Variables.BrowserPath, VideoUrl);
 
-            MainWindowViewModel.Instance.Current = new VideoDetail2ViewModel(this);
+            //MainWindowViewModel.Instance.Current = new VideoDetail2ViewModel(this);
 
             // SEEﾘｽﾄに追加
             VideoStatusModel.Instance.SeeVideos.Add(VideoId);
@@ -333,7 +333,7 @@ namespace NicoV3.Mvvm.Model
 
         public async Task<Uri> GetMovieUriAsync()
         {
-            return await Task.Run(async () =>
+            return await Task.Run(() =>
             {
                 // 動画Urlに接続
                 var tmp = GetSmileVideoHtmlText(string.Format(Constants.WatchUrl, VideoId));
