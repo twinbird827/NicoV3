@@ -56,6 +56,9 @@ namespace NicoV3.Mvvm.ViewModel
                 .Items
                 .ToSyncedSynchronizationContextCollection(m => m, AnonymousSynchronizationContext.Current);
             SelectedComboCategoryItem = ComboCategoryItems.First();
+
+            // 検索処理
+            OnSearch.Execute(null);
         }
 
         /// <summary>

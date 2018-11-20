@@ -4,6 +4,7 @@ using NicoV3.Mvvm.Model.ComboboxItem;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -337,18 +338,18 @@ namespace NicoV3.Mvvm.ViewModel
             get
             {
                 return _OnDoubleClick = _OnDoubleClick ?? new RelayCommand(
-              _ =>
-              {
-                  // ﾌﾞﾗｳｻﾞ表示
-                  Source.StartBrowser();
+                _ =>
+                {
+                    // ﾌﾞﾗｳｻﾞ表示
+                    Source.StartBrowser();
 
-                  // ｽﾃｰﾀｽを明示的に更新
-                  OnPropertyChanged(nameof(Status));
-              },
-              _ =>
-              {
-                  return true;
-              });
+                    // ｽﾃｰﾀｽを明示的に更新
+                    OnPropertyChanged(nameof(Status));
+                },
+                _ =>
+                {
+                    return true;
+                });
             }
         }
         public ICommand _OnDoubleClick;
@@ -361,15 +362,15 @@ namespace NicoV3.Mvvm.ViewModel
             get
             {
                 return _OnKeyDown = _OnKeyDown ?? new RelayCommand<KeyEventArgs>(
-              e =>
-              {
-                  // ﾀﾞﾌﾞﾙｸﾘｯｸと同じ処理
-                  OnDoubleClick.Execute(null);
-              },
-              e =>
-              {
-                  return e.Key == Key.Enter;
-              });
+                e =>
+                {
+                    // ﾀﾞﾌﾞﾙｸﾘｯｸと同じ処理
+                    OnDoubleClick.Execute(null);
+                },
+                e =>
+                {
+                    return e.Key == Key.Enter;
+                });
             }
         }
         public ICommand _OnKeyDown;
@@ -382,18 +383,18 @@ namespace NicoV3.Mvvm.ViewModel
             get
             {
                 return _OnTemporaryAdd = _OnTemporaryAdd ?? new RelayCommand(
-              e =>
-              {
-                  // ﾃﾝﾎﾟﾗﾘに追加
-                  SearchByTemporaryModel.Instance.AddVideo(Source.VideoId);
+                e =>
+                {
+                    // ﾃﾝﾎﾟﾗﾘに追加
+                    SearchByTemporaryModel.Instance.AddVideo(Source.VideoId);
 
-                  // ｽﾃｰﾀｽを明示的に更新
-                  OnPropertyChanged(nameof(Status));
-              },
-              e =>
-              {
-                  return true;
-              });
+                    // ｽﾃｰﾀｽを明示的に更新
+                    OnPropertyChanged(nameof(Status));
+                },
+                e =>
+                {
+                    return true;
+                });
             }
         }
         public ICommand _OnTemporaryAdd;
@@ -406,21 +407,44 @@ namespace NicoV3.Mvvm.ViewModel
             get
             {
                 return _OnTemporaryDel = _OnTemporaryDel ?? new RelayCommand(
-              e =>
-              {
-                  // ﾃﾝﾎﾟﾗﾘから削除
-                  SearchByTemporaryModel.Instance.DeleteVideo(Source.VideoId);
+                e =>
+                {
+                    // ﾃﾝﾎﾟﾗﾘから削除
+                    SearchByTemporaryModel.Instance.DeleteVideo(Source.VideoId);
 
-                  // ｽﾃｰﾀｽを明示的に更新
-                  OnPropertyChanged(nameof(Status));
-              },
-              e =>
-              {
-                  return true;
-              });
+                    // ｽﾃｰﾀｽを明示的に更新
+                    OnPropertyChanged(nameof(Status));
+                },
+                e =>
+                {
+                    return true;
+                });
             }
         }
         public ICommand _OnTemporaryDel;
+
+        /// <summary>
+        /// 動画をﾀﾞｳﾝﾛｰﾄﾞする。
+        /// </summary>
+        public ICommand OnDownload
+        {
+            get
+            {
+                return _OnDownload = _OnDownload ?? new RelayCommand(
+                async _ =>
+                {
+                    using (var ms = await Source.GetMovieStreamAsync())
+                    {
+                        File.WriteAllBytes(@"C:\" + DateTime.Now.ToString("yyyyMMddhhmmssfff.bin"), ms.ToArray());
+                    }
+                },
+                _ =>
+                {
+                    return true;
+                });
+            }
+        }
+        public ICommand _OnDownload;
 
         #endregion
     }

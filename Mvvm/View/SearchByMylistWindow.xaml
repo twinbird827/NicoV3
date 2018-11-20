@@ -63,7 +63,9 @@
         <Controls:Underline Grid.Row="1" />
 
         <view:ListViewEx Grid.Row="2"
-                  ItemsSource="{Binding Items}">
+                  ItemsSource="{Binding Items}"
+                         ScrollViewer.CanContentScroll="True"
+                         VirtualizingPanel.ScrollUnit="Pixel">
 
             <ListView.Resources>
                 <converter:Long2TimeSpanConverter x:Key="long2TimeSpan" />
@@ -82,6 +84,8 @@
                                           Command="{Binding OnTemporaryAdd}" />
                                 <MenuItem Header="{x:Static properties:Resources.L_TEMPORARY_DELETE}" 
                                           Command="{Binding OnTemporaryDel}" />
+                                <MenuItem Header="{x:Static properties:Resources.L_DOWNLOAD}" 
+                                          Command="{Binding OnDownload}" />
                             </ContextMenu>
                         </Setter.Value>
                     </Setter>

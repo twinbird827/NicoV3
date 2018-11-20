@@ -47,7 +47,9 @@
         <Controls:Underline Grid.Row="1" />
 
         <view:ListViewEx Grid.Row="2"
-                  ItemsSource="{Binding Items}">
+                  ItemsSource="{Binding Items}"
+                         ScrollViewer.CanContentScroll="True"
+                         VirtualizingPanel.ScrollUnit="Pixel">
 
             <ListView.Resources>
                 <converter:Long2TimeSpanConverter x:Key="long2TimeSpan" />
