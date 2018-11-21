@@ -75,7 +75,8 @@
 
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="{x:Static properties:Resources.L_THUMBNAIL}">
+                    <GridViewColumn Header="{x:Static properties:Resources.L_THUMBNAIL}"
+                                    Width="180">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <Image Source="{Binding Thumbnail}"

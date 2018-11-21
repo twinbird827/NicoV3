@@ -197,27 +197,33 @@ namespace NicoV3.Mvvm.ViewModel
             {
                 if (_Thumbnail == null)
                 {
-                    for (int index = ComboThumbSizeModel.Instance.Items.Count() - 1; 0 < index; index--)
-                    {
-                        try
-                        {
-                            var size = ComboThumbSizeModel.Instance.Items[index].Value;
+                    NicoDataConverter.ToThumbnail(_ThumbnailUrl)
+                    .ContinueWith(
+                        t => Thumbnail = t.Result,
+                        TaskScheduler.FromCurrentSynchronizationContext()
+                    );
 
-                            ServiceFactory.MessageService.Debug(ThumbnailUrl + size);
-                            // TODO ｻﾑﾈ取得失敗時にﾃﾞﾌｫﾙﾄURLで再取得
-                            // TODO ｻﾑﾈ中/大を選択時、取得失敗した場合はﾃﾞﾌｫﾙﾄｻﾑﾈを拡大する
-                            NicoDataConverter.ToThumbnail(_ThumbnailUrl + size)
-                                .ContinueWith(
-                                    t => Thumbnail = t.Result,
-                                    TaskScheduler.FromCurrentSynchronizationContext()
-                                );
-                            break;
-                        }
-                        catch (Exception ex)
-                        {
-                            ServiceFactory.MessageService.Exception(ex);
-                        }
-                    }
+                    //for (int index = ComboThumbSizeModel.Instance.Items.Count() - 1; 0 < index; index--)
+                    //{
+                    //    try
+                    //    {
+                    //        var size = ComboThumbSizeModel.Instance.Items[index].Value;
+
+                    //        ServiceFactory.MessageService.Debug(ThumbnailUrl + size);
+                    //        // TODO ｻﾑﾈ取得失敗時にﾃﾞﾌｫﾙﾄURLで再取得
+                    //        // TODO ｻﾑﾈ中/大を選択時、取得失敗した場合はﾃﾞﾌｫﾙﾄｻﾑﾈを拡大する
+                    //        NicoDataConverter.ToThumbnail(_ThumbnailUrl + size)
+                    //            .ContinueWith(
+                    //                t => Thumbnail = t.Result,
+                    //                TaskScheduler.FromCurrentSynchronizationContext()
+                    //            );
+                    //        break;
+                    //    }
+                    //    catch (Exception ex)
+                    //    {
+                    //        ServiceFactory.MessageService.Exception(ex);
+                    //    }
+                    //}
                 }
                 return _Thumbnail;
             }

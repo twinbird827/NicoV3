@@ -64,7 +64,7 @@
         <Controls:Underline Grid.Row="1" />
 
         <view:ListViewEx Grid.Row="2"
-                  ItemsSource="{Binding Items}"
+                         ItemsSource="{Binding Items}"
                          ScrollViewer.CanContentScroll="True"
                          VirtualizingPanel.ScrollUnit="Pixel">
 
@@ -95,10 +95,11 @@
 
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="{x:Static properties:Resources.L_THUMBNAIL}">
+                    <GridViewColumn Header="{x:Static properties:Resources.L_THUMBNAIL}"
+                                    Width="180">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Image Source="{Binding Thumbnail}"
+                                <Image  x:Name="ThumnailControl" Source="{Binding Thumbnail}"
                                        Stretch="Fill"
                                        Width="{Binding RelativeSource={RelativeSource Self}, Path=Source.PixelWidth}" 
                                        Height="{Binding RelativeSource={RelativeSource Self}, Path=Source.PixelHeight}"/>
